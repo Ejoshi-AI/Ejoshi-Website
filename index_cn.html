@@ -22,3 +22,396 @@
   -->
 
   <style>
+    :root {
+      --bg-deep:      #0B0907;
+      --bg-mid:       #14110D;
+      --bg-card:      #1C1813;
+      --bronze:       #B89465;
+      --bronze-light: #D4AC7A;
+      --bronze-dark:  #8C6A3E;
+      --cream:        #F4EFE6;
+      --cream-muted:  #C8C0B2;
+      --cream-dim:    #7A7268;
+      --rule:         rgba(184,148,101,0.18);
+      --font-serif:   'Fraunces', 'Noto Serif SC', Georgia, serif;
+      --font-sans:    'Inter', 'Noto Sans SC', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      --max-w:        1120px;
+      --pad:          96px;
+      --r:            4px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--bg-deep);
+      color: var(--cream);
+      font-family: var(--font-sans);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--bronze); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--bronze-light); }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    section { padding: var(--pad) 0; border-bottom: 1px solid var(--rule); }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: .7rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--bronze); margin-bottom: 16px;
+    }
+    .h2 {
+      font-family: var(--font-sans); font-weight: 400;
+      font-size: clamp(1.875rem, 4vw, 2.75rem);
+      line-height: 1.25; color: var(--cream); margin-bottom: 20px;
+    }
+    .lead { font-size: 1.0625rem; color: var(--cream-muted); max-width: 54ch; line-height: 1.85; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,9,7,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+    }
+    .wordmark { font-family: var(--font-serif); font-weight: 300; font-size: 1.5rem; color: var(--cream); letter-spacing: .08em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: .875rem; color: var(--cream-muted); }
+    .nav-links a:hover { color: var(--cream); }
+    .lang-btn {
+      font-family: var(--font-mono); font-size: .7rem; color: var(--bronze);
+      border: 1px solid var(--bronze-dark); padding: 4px 10px; border-radius: var(--r);
+    }
+    .lang-btn:hover { background: var(--bronze-dark); color: var(--cream); }
+
+    /* Draft warning banner */
+    .draft-banner {
+      background: rgba(139,106,62,.15);
+      border-bottom: 1px solid var(--bronze-dark);
+      padding: 10px 24px;
+      font-family: var(--font-mono); font-size: .7rem;
+      color: var(--bronze); text-align: center; letter-spacing: .06em;
+    }
+
+    /* Hero */
+    .hero { padding: 120px 0 100px; }
+    .hero h1 {
+      font-family: var(--font-sans); font-weight: 400;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 1.15; color: var(--cream);
+      margin-bottom: 28px; max-width: 16ch;
+    }
+    .hero h1 span { color: var(--bronze-light); }
+    .hero-sub {
+      font-size: 1.125rem; color: var(--cream-muted);
+      max-width: 50ch; line-height: 1.9; margin-bottom: 48px;
+    }
+    .hero-form { display: flex; gap: 12px; max-width: 480px; margin-bottom: 16px; }
+    .hero-form input[type="email"] {
+      flex: 1; background: var(--bg-card); border: 1px solid var(--bronze-dark);
+      border-radius: var(--r); padding: 14px 16px; color: var(--cream);
+      font-family: var(--font-sans); font-size: .9375rem; outline: none;
+      transition: border-color .2s;
+    }
+    .hero-form input[type="email"]::placeholder { color: var(--cream-dim); }
+    .hero-form input[type="email"]:focus { border-color: var(--bronze); }
+    .hero-form button {
+      background: var(--bronze); color: var(--bg-deep); border: none;
+      border-radius: var(--r); padding: 14px 24px; font-family: var(--font-sans);
+      font-size: .875rem; font-weight: 500; cursor: pointer; white-space: nowrap;
+      transition: background .2s;
+    }
+    .hero-form button:hover { background: var(--bronze-light); }
+    .hero-note { font-family: var(--font-mono); font-size: .7rem; color: var(--cream-dim); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 56px; }
+    .about-text p { color: var(--cream-muted); font-size: 1.0625rem; line-height: 1.9; margin-bottom: 20px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--cream); font-weight: 500; }
+    .about-pull {
+      background: var(--bg-mid); border: 1px solid var(--rule);
+      border-radius: var(--r); padding: 48px;
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .about-pull blockquote {
+      font-family: var(--font-sans); font-weight: 400;
+      font-size: 1.625rem; color: var(--bronze-light); line-height: 1.4;
+    }
+    .about-pull cite { font-family: var(--font-mono); font-size: .7rem; color: var(--cream-dim); font-style: normal; }
+
+    /* Audience */
+    .audience-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .audience-card { background: var(--bg-mid); border: 1px solid var(--rule); border-radius: var(--r); padding: 36px 32px; transition: border-color .2s; }
+    .audience-card.primary { border-color: var(--bronze-dark); }
+    .audience-card:hover { border-color: var(--bronze-dark); }
+    .audience-phase { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .12em; color: var(--bronze); text-transform: uppercase; margin-bottom: 12px; }
+    .audience-card h3 { font-size: 1.25rem; font-weight: 500; color: var(--cream); margin-bottom: 12px; }
+    .audience-card p { font-size: .9375rem; color: var(--cream-muted); line-height: 1.75; }
+
+    /* Learn */
+    .learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 52px; }
+    .track-list { list-style: none; margin-top: 28px; }
+    .track-list li { display: flex; align-items: center; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--rule); font-size: .9375rem; color: var(--cream-muted); }
+    .track-list li:last-child { border-bottom: none; }
+    .track-num { font-family: var(--font-mono); font-size: .65rem; color: var(--bronze-dark); min-width: 24px; }
+    .lesson-card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--r); padding: 36px; transition: border-color .2s; }
+    .lesson-card:hover { border-color: var(--bronze-dark); }
+    .lesson-card h3 { font-size: 1.25rem; font-weight: 500; color: var(--cream); margin: 10px 0 14px; line-height: 1.3; }
+    .lesson-card p { font-size: .9375rem; color: var(--cream-muted); line-height: 1.75; margin-bottom: 24px; }
+    .text-link { font-size: .875rem; font-weight: 500; color: var(--bronze); }
+
+    /* Resources */
+    .resource-card { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; background: var(--bg-mid); border: 1px solid var(--rule); border-radius: var(--r); padding: 52px; margin-top: 52px; }
+    .resource-card h3 { font-size: 1.875rem; font-weight: 400; color: var(--cream); margin-bottom: 14px; }
+    .resource-card p { font-size: 1rem; color: var(--cream-muted); max-width: 52ch; line-height: 1.85; }
+    .pdf-thumb { width: 108px; height: 148px; background: var(--bg-card); border: 1px solid var(--bronze-dark); border-radius: var(--r); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; flex-shrink: 0; }
+    .pdf-thumb span:first-child { font-family: var(--font-serif); font-size: 1rem; color: var(--bronze); }
+    .pdf-thumb span:last-child { font-family: var(--font-mono); font-size: .6rem; color: var(--cream-dim); letter-spacing: .1em; }
+    .btn { display: inline-block; border: 1px solid var(--bronze); color: var(--bronze); border-radius: var(--r); padding: 12px 24px; font-size: .875rem; font-weight: 500; margin-top: 24px; transition: all .2s; }
+    .btn:hover { background: var(--bronze); color: var(--bg-deep); }
+
+    /* Community */
+    .community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin-top: 52px; }
+    .promise-box { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--r); padding: 40px; }
+    .promise-box h4 { font-size: 1.125rem; font-weight: 500; color: var(--bronze-light); margin-bottom: 20px; }
+    .promise-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .promise-list li { display: flex; align-items: flex-start; gap: 12px; font-size: .9375rem; color: var(--cream-muted); line-height: 1.6; }
+    .promise-list li::before { content: '—'; color: var(--bronze-dark); flex-shrink: 0; margin-top: 1px; }
+
+    /* Mission inverted */
+    #mission { background: var(--cream); border-bottom: none; }
+    #mission .eyebrow { color: var(--bronze-dark); }
+    #mission .h2 { color: var(--bg-deep); }
+    #mission .lead { color: #4A4035; }
+    #mission .contact-line { font-family: var(--font-mono); font-size: .8125rem; color: #6B5C4E; margin-top: 28px; }
+    #mission .contact-line a { color: var(--bronze-dark); }
+
+    /* Footer */
+    footer { background: var(--bg-mid); padding: 48px 0; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; }
+    .footer-wordmark { font-family: var(--font-serif); font-weight: 300; font-size: 1.25rem; color: var(--cream-muted); letter-spacing: .08em; }
+    .footer-nav { display: flex; gap: 24px; list-style: none; }
+    .footer-nav a { font-size: .8125rem; color: var(--cream-dim); }
+    .footer-nav a:hover { color: var(--cream-muted); }
+    .footer-credit { font-family: var(--font-mono); font-size: .65rem; color: var(--cream-dim); letter-spacing: .04em; border-top: 1px solid var(--rule); padding-top: 20px; }
+
+    @media (max-width: 768px) {
+      :root { --pad: 60px; }
+      .nav-links { display: none; }
+      .about-grid, .learn-grid, .community-grid { grid-template-columns: 1fr; gap: 40px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .resource-card { grid-template-columns: 1fr; }
+      .pdf-thumb { display: none; }
+      .hero-form { flex-direction: column; }
+      .hero-form button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Draft warning — remove before publishing -->
+<div class="draft-banner">⚠️ 草稿 — 待母语审核 · DRAFT — Pending native-speaker review (Rule 80) · Do not publish</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index_cn.html" class="wordmark">Ejoshi</a>
+    <ul class="nav-links">
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#learn">学习</a></li>
+      <li><a href="#resources">免费资源</a></li>
+      <li><a href="#community">社区</a></li>
+      <li><a href="#mission">联系</a></li>
+      <li><a href="index.html" class="lang-btn">中 ⇄ EN</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">AI 教育 · 免费90天 · 中文 / EN</p>
+    <h1>学会 AI，<span>走向未来。</span></h1>
+    <p class="hero-sub">
+      Ejoshi 用最简单、最诚实的方式教 AI——面向所有人。
+      免费开启90天学习计划，无需信用卡，没有任何压力。
+    </p>
+    <!-- BEEHIIV EMBED — replace with embed code when ready -->
+    <form class="hero-form" onsubmit="return false;">
+      <input type="email" placeholder="your@email.com" autocomplete="email" aria-label="电子邮件地址">
+      <button type="submit">免费开始</button>
+    </form>
+    <!-- END BEEHIIV EMBED PLACEHOLDER -->
+    <p class="hero-note">公开建设中。双语 中文 / EN。免费90天。</p>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow">关于 Ejoshi</p>
+    <h2 class="h2">一个有故事的名字。</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Ejoshi 这个名字，来自我的两个儿子和我们的家姓。
+        </p>
+        <p>
+          我创立 Ejoshi，是因为这个世界正在因 AI 而快速改变——
+          比学校快，比大多数人的工作快，比大多数家庭准备好的要快。
+          我不希望我的孩子，或者任何人，感觉自己已经错过了这个时代。
+        </p>
+        <p>
+          他们没有错过。你也没有。AI 是一种工具。工具是可以学会的。
+          我们来教你——免费，用简单的语言，从现在开始。
+        </p>
+        <p>
+          我们的标志是一本带着灯泡的书。书代表学习，灯泡代表灵感，AI 是两者相遇的地方。
+        </p>
+      </div>
+      <div class="about-pull">
+        <blockquote>"专为与众不同的你而生。"</blockquote>
+        <cite>Ejoshi · AI 教育与生活方式品牌 · 创立于 2024</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who it's for -->
+<section id="who">
+  <div class="wrap">
+    <p class="eyebrow">适合谁</p>
+    <h2 class="h2">面向所有人，从学生开始。</h2>
+    <p class="lead">Ejoshi 分阶段推进。第一阶段面向 11–18 岁的学生——越早学会与 AI 协作，未来的路就越宽。</p>
+    <div class="audience-grid">
+      <div class="audience-card primary">
+        <p class="audience-phase">第一阶段 — 现已开放</p>
+        <h3>11–18 岁学生</h3>
+        <p>你已经在用 AI 做作业了。我们教你怎么用对——让你学得更多，而不昬更少。</p>
+      </div>
+      <div class="audience-card">
+        <p class="audience-phase">第二阶段 — 即将推出</p>
+        <h3>家长与老师</h3>
+        <p>你想知道这是否安全、是否诚实、是否值得他们花时间。我们也在为你建设。</p>
+      </div>
+      <div class="audience-card">
+        <p class="audience-phase">第三阶段 — 规划中</p>
+        <h3>职场人士与长辈</h3>
+        <p>你不需要懂 AI 的原理。你需要知道怎么把它用在你的生活、工作和家庭上。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Learn -->
+<section id="learn">
+  <div class="wrap">
+    <p class="eyebrow">免费90天学习计划</p>
+    <h2 class="h2">一次一课，稳扎稳打。</h2>
+    <div class="learn-grid">
+      <div>
+        <p class="lead">计划为期90天，每周一节实用课程，通过邮件和本网站免费发送。每节课教一个当天就能用上的真实技能。</p>
+        <ul class="track-list">
+          <li><span class="track-num">01</span> 用 AI 做作业，而不是抄答案</li>
+          <li><span class="track-num">02</span> 怎样向 AI 提出更好的问题</li>
+          <li><span class="track-num">03</span> 用 AI 阅读和做笔记</li>
+          <li><span class="track-num">04</span> 用 AI 完成创意项目</li>
+          <li><span class="track-num">05</span> AI 能做什么，不能做什么</li>
+          <li><span class="track-num">→</span> 每周持续更新</li>
+        </ul>
+      </div>
+      <div>
+        <div class="lesson-card">
+          <p class="eyebrow">免费课程 · 第01课</p>
+          <h3>用 AI 做作业，而不是抄答案</h3>
+          <p>用 AI 做作业和用 AI 学得更好，是两件不同的事。这节课告诉你那条线在哪里——以及如何始终站在正确的一边。</p>
+          <a href="#" class="text-link">阅读本课 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Free Resources -->
+<section id="resources">
+  <div class="wrap">
+    <p class="eyebrow">免费资源</p>
+    <h2 class="h2">今天就带走有用的东西。</h2>
+    <p class="lead">所有资源完全免费。阅读不需要留下邮件，结尾也没有任何推销。</p>
+    <div class="resource-card">
+      <div>
+        <p class="eyebrow">免费 PDF — 现已开放</p>
+        <h3>Ejoshi AI 新手包</h3>
+        <p>五页内容，五个提示词，五件你今天就能用 AI 做到的事——无论你是学生、家长还是刚开始好奇的普通人。没有术语，没有废话。</p>
+        <a href="#" class="btn">下载新手包</a>
+      </div>
+      <div class="pdf-thumb" aria-hidden="true">
+        <span>PDF</span>
+        <span>免费</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Community -->
+<section id="community">
+  <div class="wrap">
+    <p class="eyebrow">社区</p>
+    <h2 class="h2">和大家一起学，不要独自摸索。</h2>
+    <div class="community-grid">
+      <div>
+        <p class="lead" style="margin-bottom:32px;">免费90天学习营是一群同时在学 AI 的人组成的社区。你可以提问、分享你在做的事情，按照自己的节奏前进。在 Skool 上，90天内完全免费。</p>
+        <a href="#" class="btn">加入免费学习营</a>
+      </div>
+      <div class="promise-box">
+        <h4>"免费90天"到底意味着什么</h4>
+        <ul class="promise-list">
+          <li>90天内所有课程和资源完全开放</li>
+          <li>Skool 社区访问权——真实问题得到真实解答</li>
+          <li>双语支持——英文和中文</li>
+          <li>无需信用卡，无需承诺，没有任何压力</li>
+          <li>如果将来推出付费版，我们会提前诚实地告诉你</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission / Contact -->
+<section id="mission">
+  <div class="wrap">
+    <p class="eyebrow">我们的使命</p>
+    <h2 class="h2" style="color:var(--bg-deep);">AI 教育。简单。实用。面向所有人。</h2>
+    <p class="lead">
+      世界正在因为 AI 而改变。我们不是来让你为此焦虑的。
+      我们在这里，是为了确保你知道如何与它同行——按你自己的节奏，用你自己的语言，从现在免费开始。
+    </p>
+    <p class="contact-line">有问题？写信给 <a href="mailto:nick@ejoshi.info">nick@ejoshi.info</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span class="footer-wordmark">Ejoshi</span>
+      <ul class="footer-nav">
+        <li><a href="#about">关于我们</a></li>
+        <li><a href="#learn">学习</a></li>
+        <li><a href="#resources">免费资源</a></li>
+        <li><a href="#community">社区</a></li>
+        <li><a href="index.html">English</a></li>
+      </ul>
+    </div>
+    <p class="footer-credit">
+      由 Anthropic 的 Claude 构建 &nbsp;·&nbsp;
+      © 2026 Ejoshi &nbsp;·&nbsp;
+      专为与众不同的你而生。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+                                                                                                                                                                                             

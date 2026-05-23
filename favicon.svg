@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Ejoshi brand mark — book + lightbulb — bronze on black -->
+  <rect width="32" height="32" rx="3" fill="#0B0907"/>
+  <!-- Lightbulb glow (soft) -->
+  <circle cx="16" cy="7.5" r="5.5" fill="#2A1F12"/>
+  <!-- Lightbulb body -->
+  <circle cx="16" cy="7.5" r="4" fill="#B89465"/>
+  <!-- Lightbulb base / neck -->
+  <rect x="14.2" y="11" width="3.6" height="1.5" rx="0.4" fill="#B89465"/>
+  <rect x="14.6" y="12.3" width="2.8" height="1" rx="0.3" fill="#8B6F47"/>
+  <!-- Open book pages -->
+  <path d="M5 25 L16 21.5 L27 25 L27 15.5 L16 12 L5 15.5 Z" fill="#8B6F47"/>
+  <!-- Book spine line -->
+  <line x1="16" y1="12" x2="16" y2="21.5" stroke="#0B0907" stroke-width="1.2"/>
+  <!-- Page highlight lines (left page) -->
+  <line x1="8.5" y1="18" x2="14.5" y2="16.8" stroke="#B89465" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+  <line x1="8.5" y1="20" x2="14.5" y2="18.8" stroke="#B89465" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+  <!-- Page highlight lines (right page) -->
+  <line x1="17.5" y1="16.8" x2="23.5" y2="18" stroke="#B89465" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+  <line x1="17.5" y1="18.8" x2="23.5" y2="20" stroke="#B89465" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+</svg>

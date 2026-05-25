@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejoshi — 人工智能教育，面向所有人</title>
-  <meta name="description" content="Ejoshi 以简单、真诚、负责任的方式，教每个人学会使用 AI。简单、真诚地学习。中文版。">
+  <meta name="description" content="Ejoshi 用简单、真诚、负责任的方式，教每个人把 AI 用起来。免费开放。没有付费墙。中文版。">
   <!-- Favicon (Rule 104) -->
   <link rel="icon" type="image/png" href="logo-icon-web.png">
   <link rel="apple-touch-icon" href="logo-icon-web.png">
@@ -12,11 +12,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ejoshi.ai/index_cn.html">
   <meta property="og:title" content="Ejoshi — 人工智能教育，面向所有人">
-  <meta property="og:description" content="Ejoshi 以简单、真诚、负责任的方式，教每个人学会使用 AI。用平实的语言开始学习。">
+  <meta property="og:description" content="Ejoshi 用简单、真诚、负责任的方式，教每个人把 AI 用起来。从今天开始，一步一步来。">
   <meta property="og:image" content="https://ejoshi.ai/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ejoshi — 人工智能教育，面向所有人">
-  <meta name="twitter:description" content="Ejoshi 以简单、真诚、负责任的方式，教每个人学会使用 AI。">
+  <meta name="twitter:description" content="Ejoshi 用简单、真诚、负责任的方式，教每个人把 AI 用起来。">
   <meta name="twitter:image" content="https://ejoshi.ai/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,13 +34,13 @@
       --bg-deep:      #0B0907;
       --bg-mid:       #14110D;
       --bg-card:      #1C1813;
-      --bronze:       #B89465;
-      --bronze-light: #D4AC7A;
-      --bronze-dark:  #8C6A3E;
-      --cream:        #F4EFE6;
+      --bronze:       #D4AF37;   /* Canonical Gold — locked 2026-05-24 */
+      --bronze-light: #E5C570;   /* lighter gold for hovers */
+      --bronze-dark:  #A8862A;   /* darker gold for borders */
+      --cream:        #FAF0DC;   /* Canonical Cream — locked 2026-05-24 */
       --cream-muted:  #C8C0B2;
       --cream-dim:    #7A7268;
-      --rule:         rgba(184,148,101,0.18);
+      --rule:         rgba(212,175,55,0.18);
       --font-serif:   'Fraunces', 'Noto Serif SC', Georgia, serif;
       --font-sans:    'Inter', 'Noto Sans SC', system-ui, sans-serif;
       --font-mono:    'JetBrains Mono', monospace;
@@ -82,7 +82,7 @@
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      height: 80px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
     }
     .wordmark { font-family: var(--font-serif); font-weight: 300; font-size: 1.5rem; color: var(--cream); letter-spacing: .08em; }
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
@@ -214,7 +214,7 @@
 <nav>
   <div class="nav-inner">
     <a href="index_cn.html" class="wordmark">
-      <img src="logo-icon-web.png" alt="" style="height:28px;width:28px;margin-right:10px;vertical-align:middle;border-radius:4px;">Ejoshi
+      <img src="logo-icon-web.png" alt="" style="height:48px;width:48px;margin-right:14px;vertical-align:middle;border-radius:4px;">Ejoshi
     </a>
     <ul class="nav-links">
       <li><a href="#about">关于我们</a></li>
@@ -231,13 +231,18 @@
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">AI 教育 · 中文 / EN</p>
-    <h1>学会与 AI 协作，<span>走向未来。</span></h1>
+    <h1>从今天开始，学会和 <span>AI</span> 一起做事。</h1>
     <p class="hero-sub">
-      Ejoshi 以简单、真诚、负责任的方式，教每个人学会使用 AI。
-      用平实的语言开启学习计划。
+      Ejoshi 用简单、真诚、负责任的方式，教每个人把 AI 用起来。我们公开搭建。免费开放。加入名单。课程做好了，我们直接告诉你。
     </p>
-        <!-- Beehiiv subscribe form -->
-    <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="196eb951-7609-4f63-ad26-b26041725986"></script>
+
+    <!-- Beehiiv subscribe form — 直接 POST，按 Ejoshi 品牌样式 (fixed 2026-05-26) -->
+    <form class="hero-form" action="https://embeds.beehiiv.com/196eb951-7609-4f63-ad26-b26041725986" method="POST" target="_blank">
+      <label for="hero-email-cn" class="sr-only" style="position:absolute;left:-9999px;">你的邮箱</label>
+      <input id="hero-email-cn" type="email" name="email" placeholder="you@yourdomain.com" required autocomplete="email">
+      <button type="submit">加入 Ejoshi 名单</button>
+    </form>
+
     <p class="hero-note">公开建设中。双语 中文 / EN。</p>
   </div>
 </section>
@@ -250,23 +255,20 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          Ejoshi 这个名字，源自我两个儿子的名字和我们一家人的姓氏。
+          Ejoshi 这个名字，来自我的两个儿子，也来自我们一家人的姓氏。
         </p>
         <p>
-          我创立 Ejoshi，是因为这个世界正在因 AI 而快速改变——
-          比学校的课程更新得更快，比许多工作的变化更快，也比大多数家庭准备好的速度更快。
-          我不希望我的孩子，也不希望任何人，觉得自己已经错过了这个时代。
+          我创立 Ejoshi，是因为 AI 正在改变很多事。很多人还不知道该从哪里开始。
         </p>
         <p>
-          他们没有错过。你也没有。AI 是一种工具。而工具，是可以学会使用的。
-          我们会从现在开始，带你一步一步学会它。
+          其实不复杂。AI 是工具。工具是可以学会的。咱们从这里开始，一步一步来。
         </p>
         <p>
           我们的标志由一本书和一盏灯泡组成。书代表学习，灯泡代表灵感，而 AI 正是学习与灵感交汇的地方。
         </p>
       </div>
       <div class="about-pull">
-        <blockquote>"为每一个独特的学习者而生。"</blockquote>
+        <blockquote>"为敢用不同方式前进的人而生。"</blockquote>
         <cite>Ejoshi · AI 教育与生活方式品牌 · 创立于 2024</cite>
       </div>
     </div>
@@ -277,7 +279,7 @@
 <section id="who">
   <div class="wrap">
     <p class="eyebrow">适合谁</p>
-    <h2 class="h2">面向所有人，从学生开始。</h2>
+    <h2 class="h2">面向所有人。先从学生开始。</h2>
     <p class="lead">Ejoshi 的课程将分阶段推出。第一阶段，我们首先面向学生——越早学会与 AI 协作，未来的路就越宽。</p>
     <div class="audience-grid">
       <div class="audience-card primary">
@@ -287,7 +289,7 @@
       </div>
       <div class="audience-card">
         <p class="audience-phase">第二阶段 — 即将推出</p>
-        <h3>家长与老师</h3>
+        <h3>家长和老师</h3>
         <p>你想知道这是否安全、是否诚实、是否值得他们花时间。我们也在为你建设。</p>
       </div>
       <div class="audience-card">
@@ -302,26 +304,27 @@
 <!-- Learn -->
 <section id="learn">
   <div class="wrap">
-    <p class="eyebrow">学习计划</p>
-    <h2 class="h2">一次一课，稳扎稳打。</h2>
+    <p class="eyebrow">我们在建什么</p>
+    <h2 class="h2">一节一节来。做好了才上。</h2>
     <div class="learn-grid">
       <div>
-        <p class="lead">每周一节实用课程，通过邮件发送，并在本网站发布。每节课都教你一个当天就能用上的真实技能。</p>
-        <ul class="track-list">
-          <li><span class="track-num">01</span> 用 AI 做作业，而不是抄答案</li>
-          <li><span class="track-num">02</span> 怎样向 AI 提出更好的问题</li>
-          <li><span class="track-num">03</span> 用 AI 阅读和做笔记</li>
-          <li><span class="track-num">04</span> 用 AI 完成创意项目</li>
-          <li><span class="track-num">05</span> AI 能做什么，不能做什么</li>
-          <li><span class="track-num">→</span> 每周持续更新</li>
+        <p class="lead">Ejoshi 正在公开搭建，一块一块来。每一节实用课程教你一个当天就能用上的真实技能 —— 不为炒作而写。做好了就上线。免费开放，没有付费墙。</p>
+        <p class="lead" style="margin-top:16px;">我们正在建的课程方向：</p>
+        <ul class="track-list" aria-label="正在建设的课程">
+          <li><span class="track-num">·</span> 用 AI 做作业，而不是抄答案</li>
+          <li><span class="track-num">·</span> 怎样向 AI 提出更好的问题</li>
+          <li><span class="track-num">·</span> 用 AI 阅读和做笔记</li>
+          <li><span class="track-num">·</span> 用 AI 完成创意项目</li>
+          <li><span class="track-num">·</span> AI 能做什么、不能做什么</li>
+          <li><span class="track-num">→</span> 加入名单 —— 每节课上线时你会在第一波收到</li>
         </ul>
       </div>
       <div>
         <div class="lesson-card">
-          <p class="eyebrow">第01课</p>
-          <h3>用 AI 做作业，而不是抄答案</h3>
-          <p>用 AI 做作业和用 AI 学得更好，是两件不同的事。这节课告诉你那条线在哪里——以及如何始终站在正确的一边。</p>
-          <a href="#" class="text-link">阅读本课 →</a>
+          <p class="eyebrow">现已上线</p>
+          <h3>Ejoshi AI 入门工具包</h3>
+          <p>第一份实用资源 —— 五种把 AI 用进一周的方法，附带可以直接复制到任何工具里的提示词。加入邮件名单，工具包会送到你邮箱里。</p>
+          <a href="#hero-email-cn" class="text-link">加入名单领取 →</a>
         </div>
       </div>
     </div>
@@ -332,14 +335,14 @@
 <section id="resources">
   <div class="wrap">
     <p class="eyebrow">资源</p>
-    <h2 class="h2">今天就带走有用的东西。</h2>
-    <p class="lead">阅读不需要留下邮件，结尾也没有任何推销。</p>
+    <h2 class="h2">今天就能用上的东西，先放在这里。</h2>
+    <p class="lead">免费开放。没有付费墙。没有压力。</p>
     <div class="resource-card">
       <div>
-        <p class="eyebrow">PDF — 现已开放</p>
-        <h3>Ejoshi AI 新手包</h3>
-        <p>五页内容，五个提示词，五件你今天就能用 AI 做到的事——无论你是学生、家长还是刚开始好奇的普通人。没有术语，没有废话。</p>
-        <a href="#" class="btn">下载新手包</a>
+        <p class="eyebrow">PDF — 现已上线</p>
+        <h3>Ejoshi AI 入门工具包</h3>
+        <p>五页内容，五个提示词，五件你今天就能用 AI 做到的事 —— 无论你是学生、家长还是刚开始好奇的普通人。没有术语，没有废话。加入邮件名单，工具包会送到你邮箱里。</p>
+        <a href="#hero-email-cn" class="btn">加入名单领取</a>
       </div>
       <div class="pdf-thumb" aria-hidden="true">
         <span>PDF</span>
@@ -352,20 +355,20 @@
 <section id="community">
   <div class="wrap">
     <p class="eyebrow">社区</p>
-    <h2 class="h2">和大家一起学，不要独自摸索。</h2>
+    <h2 class="h2">一个学习的房间，正在建。</h2>
     <div class="community-grid">
       <div>
-        <p class="lead" style="margin-bottom:32px;">我们的学习营是一群同时在学 AI 的人组成的社区。你可以提问、分享你在做的事情，按照自己的节奏前进。在 Skool 上集合。</p>
-        <a href="#" class="btn">加入学习营</a>
+        <p class="lead" style="margin-bottom:32px;">Ejoshi 的社区将落在 Skool 上 —— 一个安静的房间，让一群人一起学 AI。可以提问、分享你在做的事情、按你自己的节奏前进。我们一边搭一边开门 —— 免费开放，没有付费墙。加入邮件名单，开门那天你会收到邀请。</p>
+        <a href="#hero-email-cn" class="btn">加入名单</a>
       </div>
       <div class="promise-box">
-        <h4>学习营是什么样的</h4>
+        <h4>它正在被建成什么样</h4>
         <ul class="promise-list">
-          <li>所有课程和资源完全开放</li>
-          <li>Skool 社区访问权——真实问题得到真实解答</li>
-          <li>双语支持——英文和中文</li>
-          <li>课程精炼实用——没有水分，没有填充内容</li>
-          <li>如果学习营运作方式有任何变化，我们会提前诚实地告诉你</li>
+          <li>课程与资源，免费开放。没有付费墙。</li>
+          <li>一个 Skool 社区，真实问题得到真实解答。</li>
+          <li>双语 —— 英文与中文，并列同等重量。</li>
+          <li>朴素语言。没有水分。没有填充内容。</li>
+          <li>今天有什么、还没做好什么，我们都会直说。</li>
         </ul>
       </div>
     </div>
@@ -376,10 +379,9 @@
 <section id="mission">
   <div class="wrap">
     <p class="eyebrow">我们的使命</p>
-    <h2 class="h2" style="color:var(--bg-deep);">AI 教育。简单。实用。面向所有人。</h2>
+    <h2 class="h2" style="color:var(--bg-deep);">AI 教育。朴素。实用。面向所有人。</h2>
     <p class="lead">
-      世界正在因为 AI 而改变。我们不是来让你为此焦虑的。
-      我们在这里，是为了帮助你学会如何与 AI 同行——按你自己的节奏，用你自己的语言。
+      世界正在因为 AI 改变。我们不是来制造焦虑的。我们在这里，是帮你学会怎么用它。按你自己的节奏，用你自己的语言。
     </p>
     <p class="contact-line">有问题？写信给 <a href="mailto:nick@ejoshi.info">nick@ejoshi.info</a></p>
   </div>
@@ -388,7 +390,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <span class="footer-wordmark">Ejoshi</span>
+      <span class="footer-wordmark"><img src="logo-icon-web.png" alt="" style="height:28px;width:28px;margin-right:10px;vertical-align:middle;border-radius:4px;">Ejoshi</span>
       <ul class="footer-nav">
         <li><a href="#about">关于我们</a></li>
         <li><a href="#learn">学习</a></li>
@@ -398,9 +400,9 @@
       </ul>
     </div>
     <p class="footer-credit">
-      由 Anthropic 的 Claude 构建 &nbsp;·&nbsp;
+      由 Claude 构建 &nbsp;·&nbsp; 与 Anthropic 无官方关联 &nbsp;·&nbsp;
       © 2026 Ejoshi &nbsp;·&nbsp;
-      专为与众不同的你而生。
+      为敢用不同方式前进的人而生。
     </p>
   </div>
 </footer>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <!-- Favicon (Rule 104) -->
   <link rel="icon" type="image/png" href="logo-icon-web.png">
   <link rel="apple-touch-icon" href="logo-icon-web.png">
-  <!-- Open Graph / social sharing (Rule 10h4) -->
+  <!-- Open Graph / social sharing (Rule 104) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ejoshi.ai/">
   <meta property="og:title" content="Ejoshi — AI Education for Everyone">
@@ -28,14 +28,14 @@
       --bg-deep:       #0B0907;
       --bg-mid:        #14110D;
       --bg-card:       #1C1813;
-      --bronze:        #B89465;   /* web legibility bronze — screen use */
-      --bronze-light:  #D4AC7A;
-      --bronze-dark:   #8C6A3E;
-      --gold:          #E8C794;
-      --cream:         #F4EFE6;
+      --bronze:        #D4AF37;   /* Canonical Gold — locked 2026-05-24 */
+      --bronze-light:  #E5C570;   /* lighter gold for hovers */
+      --bronze-dark:   #A8862A;   /* darker gold for borders */
+      --gold:          #FAF0DC;   /* Canonical Cream — used for hero italic accent */
+      --cream:         #FAF0DC;   /* Canonical Cream — locked 2026-05-24 */
       --cream-muted:   #C8C0B2;
       --cream-dim:     #7A7268;
-      --rule:          rgba(184,148,101,0.18);
+      --rule:          rgba(212,175,55,0.18);
       --font-serif:    'Fraunces', Georgia, serif;
       --font-sans:     'Inter', system-ui, sans-serif;
       --font-mono:     'JetBrains Mono', monospace;
@@ -106,7 +106,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      height: 80px;
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 0 24px;
@@ -527,8 +527,43 @@
 </head>
 <body>
 
-    <!-- Beehiiv subscribe form -->
-    <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="196eb951-7609-4f63-ad26-b26041725986"></script>
+<!-- ═══════════════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════════════ -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="wordmark">
+      <img src="logo-icon-web.png" alt="" style="height:48px;width:48px;margin-right:14px;vertical-align:middle;border-radius:4px;">Ejoshi
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#learn">Learn</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#mission">Contact</a></li>
+      <li><a href="index_cn.html" class="lang-btn">EN ⇄ 中</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="wrap">
+    <p class="eyebrow">AI education · EN / 中文</p>
+    <h1 id="hero-heading">Learn AI.<br><em>Go anywhere.</em></h1>
+    <p class="hero-sub">
+      Ejoshi teaches AI the way it should be taught — simply, honestly, and for everyone.
+      Built in public. Free to access. Join the list and be there when the first lessons ship.
+    </p>
+
+    <!-- Beehiiv subscribe form — direct POST, styled to Ejoshi brand (fixed 2026-05-26) -->
+    <form class="hero-form" action="https://embeds.beehiiv.com/196eb951-7609-4f63-ad26-b26041725986" method="POST" target="_blank">
+      <label for="hero-email" class="sr-only" style="position:absolute;left:-9999px;">Your email</label>
+      <input id="hero-email" type="email" name="email" placeholder="you@yourdomain.com" required autocomplete="email">
+      <button type="submit">Join the Ejoshi List</button>
+    </form>
 
     <p class="hero-note">Building in public. Bilingual EN / 中文.</p>
   </div>
@@ -614,34 +649,33 @@
 ═══════════════════════════════════════════════════════════════ -->
 <section id="learn" aria-labelledby="learn-heading">
   <div class="wrap">
-    <p class="eyebrow">The learning track</p>
-    <h2 class="h2" id="learn-heading">One lesson at a time.</h2>
+    <p class="eyebrow">What we&rsquo;re building</p>
+    <h2 class="h2" id="learn-heading">One lesson at a time — when each one is ready.</h2>
     <div class="learn-grid">
       <div>
         <p class="lead">
-          One practical lesson per week, delivered
-          by email and on this site. Each lesson teaches one real skill you can
-          use the same day.
+          Ejoshi is being built in public, piece by piece. Practical lessons that teach one real skill you can use the same day — written for real lives, not for hype. They land here as they ship. Free to access. No paywall.
         </p>
-        <ul class="track-list" aria-label="Lesson list">
-          <li><span class="track-num">01</span> AI for homework, without cheating</li>
-          <li><span class="track-num">02</span> How to ask AI a better question</li>
-          <li><span class="track-num">03</span> AI for reading and note-taking</li>
-          <li><span class="track-num">04</span> AI for creative projects</li>
-          <li><span class="track-num">05</span> Understanding what AI can and can't do</li>
-          <li><span class="track-num">→</span> More lessons added weekly</li>
+        <p class="lead" style="margin-top:16px;">
+          Lessons we&rsquo;re working toward:
+        </p>
+        <ul class="track-list" aria-label="Lessons in development">
+          <li><span class="track-num">·</span> AI for homework, without cheating</li>
+          <li><span class="track-num">·</span> How to ask AI a better question</li>
+          <li><span class="track-num">·</span> AI for reading and note-taking</li>
+          <li><span class="track-num">·</span> AI for creative projects</li>
+          <li><span class="track-num">·</span> Understanding what AI can and can&rsquo;t do</li>
+          <li><span class="track-num">→</span> Join the list — you&rsquo;ll be there when each one ships</li>
         </ul>
       </div>
       <div>
         <div class="lesson-card">
-          <p class="eyebrow">Lesson 01</p>
-          <h3>AI for homework, without cheating</h3>
+          <p class="eyebrow">Available now</p>
+          <h3>The Ejoshi AI Starter Kit</h3>
           <p>
-            There's a difference between using AI to do your homework and using
-            AI to do it better. This lesson shows students exactly where that
-            line is — and how to stay on the right side of it.
+            The first practical resource — five ways to use AI well in your week, with prompts you can paste into any tool. Join the email list and the kit lands in your inbox.
           </p>
-          <a href="#" class="text-link">Read the lesson →</a>
+          <a href="#hero-email" class="text-link">Join the list to get it →</a>
         </div>
       </div>
     </div>
@@ -656,8 +690,7 @@
     <p class="eyebrow">Resources</p>
     <h2 class="h2" id="resources-heading">Take something useful today.</h2>
     <p class="lead">
-      No email required to read it.
-      No upsell waiting at the end.
+      Free to access. No paywall. No pressure.
     </p>
     <div class="resource-card">
       <div>
@@ -665,10 +698,10 @@
         <h3>The Ejoshi AI Starter Kit</h3>
         <p>
           Five pages. Five prompts. Five things you can do with AI today —
-          whether you're a student, a parent, or someone who's just curious.
-          No jargon. No fluff. No "revolutionary framework."
+          whether you&rsquo;re a student, a parent, or someone who&rsquo;s just curious.
+          No jargon. No fluff. No &ldquo;revolutionary framework.&rdquo; Join the email list and the kit lands in your inbox.
         </p>
-        <a href="#" class="btn">Download the starter kit</a>
+        <a href="#hero-email" class="btn">Join the list to get the kit</a>
       </div>
       <div class="pdf-thumb" aria-hidden="true">
         <span>PDF</span>
@@ -683,24 +716,22 @@
 <section id="community" aria-labelledby="community-heading">
   <div class="wrap">
     <p class="eyebrow">Community</p>
-    <h2 class="h2" id="community-heading">Learn with others, not alone.</h2>
+    <h2 class="h2" id="community-heading">A learning room — being built.</h2>
     <div class="community-grid">
       <div>
         <p class="lead" style="margin-bottom:32px;">
-          Our learning cohort is a group of people learning AI together.
-          Ask questions, share what you're building, and move at a pace that works for you.
-          It's on Skool. It costs nothing.
+          Ejoshi&rsquo;s community lives on Skool — a calm room where people learn AI together. Ask questions, share what you&rsquo;re building, move at a pace that works for you. It opens its doors as we ship — free to access, no paywall. Join the email list and you&rsquo;ll be invited the day it&rsquo;s ready.
         </p>
-        <a href="#" class="btn">Join the cohort</a>
+        <a href="#hero-email" class="btn">Join the list</a>
       </div>
       <div class="promise-box">
-        <h4>What this looks like</h4>
+        <h4>What it&rsquo;s being built to be</h4>
         <ul class="promise-list">
-          <li>Full access to all lessons and resources</li>
-          <li>Community access on Skool — real answers to real questions</li>
-          <li>Bilingual support — English and 中文</li>
-          <li>Lessons that respect your time — no fluff, no filler</li>
-          <li>If anything ever changes about how this works, you'll hear about it honestly</li>
+          <li>Lessons and resources, free to access. No paywall.</li>
+          <li>A Skool community with real answers to real questions.</li>
+          <li>Bilingual — English and 中文, side by side.</li>
+          <li>Plain language. No fluff. No filler.</li>
+          <li>Honest about what&rsquo;s here today and what&rsquo;s still being built.</li>
         </ul>
       </div>
     </div>
@@ -731,7 +762,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <span class="footer-wordmark">Ejoshi</span>
+      <span class="footer-wordmark"><img src="logo-icon-web.png" alt="" style="height:28px;width:28px;margin-right:10px;vertical-align:middle;border-radius:4px;">Ejoshi</span>
       <ul class="footer-nav" aria-label="Footer navigation">
         <li><a href="#about">About</a></li>
         <li><a href="#learn">Learn</a></li>
@@ -741,7 +772,7 @@
       </ul>
     </div>
     <p class="footer-credit">
-      Built with Claude by Anthropic &nbsp;·&nbsp;
+      Built with Claude &nbsp;·&nbsp; Not affiliated with Anthropic &nbsp;·&nbsp;
       © 2026 Ejoshi &nbsp;·&nbsp;
       Made for the ones who move different.
     </p>

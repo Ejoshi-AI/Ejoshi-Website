@@ -14,7 +14,9 @@
   if (nav && toggle) {
     toggle.addEventListener('click', function () {
       nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', nav.classList.contains('is-open'));
+      const isOpen = nav.classList.contains('is-open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
   }
 
@@ -54,9 +56,4 @@
       const msg = form.dataset.successMsg || 'Thanks. You are on the list.';
       const note = document.createElement('p');
       note.className = 'email-microcopy';
-      note.style.color = 'var(--gold)';
-      note.textContent = msg;
-      form.replaceWith(note);
-    });
-  });
-})();
+      note.st

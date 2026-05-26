@@ -51,9 +51,19 @@
     if (form.dataset.live === 'true') return; // a wired form opts out
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const email = form.querySelector('input[type="email"]').value.trim();
+      const emailInput = form.querySelector('input[type="email"]');
+      const email = emailInput ? emailInput.value.trim() : '';
       if (!email) return;
       const msg = form.dataset.successMsg || 'Thanks. You are on the list.';
+      const existing = form.querySelector('.email-success');
+      if (existing) existing.remove();
       const note = document.createElement('p');
-      note.className = 'email-microcopy';
-      note.st
+      note.className = 'email-microcopy email-success';
+      note.style.marginTop = '12px';
+      note.textContent = msg;
+      form.appendChild(note);
+      if (emailInput) emailInput.value = '';
+    });
+  });
+
+})();

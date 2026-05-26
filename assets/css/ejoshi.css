@@ -1,16 +1,16 @@
 /* ============================================================
    Ejoshi — v8 Design System
-   Locked palette: Gold #D4AF37 · Cream #FAF0DC · Black #000000
+   Locked palette: Amber-Bronze #BE9646 · Warm Cream #E6D7B4 · Black #000000
    Type: Fraunces (display) · Inter (body) · JetBrains Mono (eyebrow)
    Built 2026-05-25. Authored to ship on GitHub Pages.
    ============================================================ */
 
 :root {
   /* Brand palette — locked 2026-05-24 (Gold + Cream replaces Bronze) */
-  --gold:        #D4AF37;
-  --gold-soft:   #E5C570;
-  --gold-deep:   #A8862A;
-  --cream:       #FAF0DC;
+  --gold:        #BE9646;
+  --gold-soft:   #D0B47B;
+  --gold-deep:   #977635;
+  --cream:       #E6D7B4;
   --cream-muted: #C8C0B2;
   --cream-dim:   #7A7268;
   --black:       #000000;

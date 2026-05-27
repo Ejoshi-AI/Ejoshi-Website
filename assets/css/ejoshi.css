@@ -325,6 +325,27 @@ p + p { margin-top: 1em; }
   letter-spacing: .02em;
 }
 
+/* ── Hero Owl mascot (Rule 17 Owl-led brand · Rule 108 character format) ─── */
+.hero-owl {
+  display: block;
+  margin: 0 auto clamp(20px, 3vw, 36px);
+  width: clamp(160px, 22vw, 240px);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(190, 150, 70, 0.25));
+}
+.hero-owl-about {
+  width: clamp(180px, 24vw, 260px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-owl {
+    animation: owl-float 6s ease-in-out infinite;
+  }
+}
+@keyframes owl-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 /* ── Section header ─────────────────────────────────────────── */
 .section-head {
   display: flex;
@@ -491,23 +512,4 @@ p + p { margin-top: 1em; }
   .footer-top { grid-template-columns: 1fr; }
 }
 .footer-brand img { height: 36px; width: auto; margin-bottom: 18px; }
-.footer-brand p { font-size: .95rem; color: var(--cream-muted); }
-.footer h4 {
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-}
-.footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer ul a { color: var(--cream-muted); font-size: .94rem; }
-.footer ul a:hover { color: var(--gold); }
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-top: 30px;
-  bord
+.footer-brand 

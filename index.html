@@ -3,34 +3,950 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejoshi — AI that works for your everyday life.</title>
-  <meta name="description" content="Ejoshi is an AI education and lifestyle brand built for families, learners, educators, and builders who are ready to move different. Practical AI lessons, prompts, and resources — in plain language.">
-  <meta name="theme-color" content="#000000">
+  <title>Ejoshi — AI, made for everyday humans.</title>
+  <meta name="description" content="The calm place to learn AI. Practical lessons, free resources, and a quiet corner of the internet built for families, learners, educators, and builders.">
+  <meta name="theme-color" content="#0F0A05">
 
-  <!-- Favicon & Open Graph (Rule 104) -->
-  <link rel="icon" type="image/svg+xml" href="assets/img/ejoshi-icon.svg">
-  <link rel="icon" type="image/png" href="assets/img/ejoshi-icon.png">
-  <link rel="apple-touch-icon" href="assets/img/ejoshi-icon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/img/ejoshi-icon-bronze.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ejoshi.ai/">
-  <meta property="og:title" content="Ejoshi — AI that works for your everyday life.">
-  <meta property="og:description" content="An AI education and lifestyle brand. Simple, practical, and free to access — built for the ones who are ready to learn.">
-  <meta property="og:image" content="https://ejoshi.ai/assets/img/ejoshi-lockup.png">
+  <meta property="og:title" content="Ejoshi — AI, made for everyday humans.">
+  <meta property="og:description" content="The calm place to learn AI. Simple, practical, and free — no paywall, no hype.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="zh_CN">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ejoshi — AI that works for your everyday life.">
-  <meta name="twitter:description" content="An AI education and lifestyle brand. Simple, practical, and free to access — built for the ones who are ready to learn.">
-  <meta name="twitter:image" content="https://ejoshi.ai/assets/img/ejoshi-lockup.png">
-  <link rel="alternate" hreflang="en" href="https://ejoshi.ai/index.html">
-  <link rel="alternate" hreflang="zh" href="https://ejoshi.ai/index_cn.html">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/ejoshi.css?v=20260527">
+  <style>
+    /* ============================================================
+       v9 prototype — Warm Scholarly · Owl Library aesthetic
+       Locked tagline: "AI, made for everyday humans."
+       ============================================================ */
+
+    :root {
+      /* warmer-shifted palette */
+      --bg: #0F0A05;
+      --bg-deep: #08050A;
+      --surface: #1A130A;
+      --surface-lift: #261C10;
+      --candle-amber: #E2A847;
+      --bronze: #BE9646;
+      --bronze-warm: #C99B4F;
+      --bronze-deep: #8C6B2E;
+      --cream: #F0E0BC;
+      --cream-warm: #E6D7B4;
+      --cream-dim: #B8AA8A;
+      --paper: #D9C9A7;
+      --text: var(--cream-warm);
+      --text-dim: rgba(230, 215, 180, 0.68);
+      --text-muted: rgba(230, 215, 180, 0.4);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --max-width: 1200px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 100;
+      background: var(--candle-amber); color: var(--bg);
+      padding: 12px 20px; text-decoration: none; font-weight: 500;
+    }
+    .skip-link:focus { left: 16px; top: 16px; }
+
+    /* ============================================================
+       NAV — warm-glass blur
+       ============================================================ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(15, 10, 5, 0.6);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      border-bottom: 1px solid rgba(190, 150, 70, 0.15);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--cream); text-decoration: none; }
+    .nav-brand img {
+      width: 38px; height: 38px;
+      filter: drop-shadow(0 4px 18px rgba(226, 168, 71, 0.35));
+    }
+    .nav-brand-text {
+      font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 15px;
+      font-weight: 400; transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover, .nav-links a.is-active { color: var(--cream); }
+    .nav-links a.is-active::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; right: 0;
+      height: 1px; background: var(--candle-amber);
+      box-shadow: 0 0 10px rgba(226, 168, 71, 0.7);
+    }
+    .nav-cta { display: flex; align-items: center; gap: 18px; }
+    .lang-toggle {
+      background: transparent; border: 1px solid rgba(230, 215, 180, 0.22);
+      color: var(--cream-dim); padding: 8px 14px; border-radius: 999px;
+      font-family: var(--sans); font-size: 13px; cursor: pointer; transition: all 0.2s;
+    }
+    .lang-toggle:hover { border-color: var(--candle-amber); color: var(--candle-amber); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 24px; border-radius: 999px;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.35s var(--ease);
+      position: relative;
+    }
+    .btn-candle {
+      background: linear-gradient(135deg, var(--candle-amber), var(--bronze));
+      color: #2A1B08;
+      box-shadow: 0 10px 28px rgba(226, 168, 71, 0.28),
+                  0 0 40px rgba(226, 168, 71, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .btn-candle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(226, 168, 71, 0.5),
+                  0 0 60px rgba(226, 168, 71, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .btn-ghost {
+      background: rgba(15, 10, 5, 0.4); color: var(--cream);
+      border: 1px solid rgba(230, 215, 180, 0.25);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { border-color: var(--candle-amber); color: var(--candle-amber); }
+
+    .nav-toggle { display: none; background: transparent; border: 0; color: var(--cream); font-size: 24px; cursor: pointer; }
+
+    /* ============================================================
+       HERO — Video library scene with text overlay
+       ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh; min-height: 100svh;
+      overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      z-index: 0;
+    }
+    .hero-video-fallback {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      background-image: url('assets/video/ejoshi-ai-learning-library-hero-poster.jpg');
+      background-size: cover; background-position: center;
+      z-index: 0;
+    }
+    /* Warm scrim gradient for text legibility */
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse at 25% 50%, rgba(15, 10, 5, 0.75), transparent 55%),
+        linear-gradient(180deg, rgba(15, 10, 5, 0.55) 0%, rgba(15, 10, 5, 0.15) 35%, rgba(15, 10, 5, 0.45) 100%);
+    }
+    /* Vignette */
+    .hero-vignette {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(8, 5, 10, 0.7) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 140px 32px 80px;
+      width: 100%;
+    }
+    .hero-copy { max-width: 600px; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--mono); font-size: 12px;
+      color: var(--candle-amber); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 28px;
+      padding: 7px 14px; border: 1px solid rgba(226, 168, 71, 0.35);
+      border-radius: 6px; background: rgba(15, 10, 5, 0.55);
+      backdrop-filter: blur(8px);
+    }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(44px, 6vw, 84px); line-height: 1.02;
+      letter-spacing: -0.02em; color: var(--cream);
+      margin-bottom: 30px;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+    }
+    .hero h1 .accent {
+      color: var(--candle-amber);
+      font-style: italic; font-weight: 300;
+    }
+    .hero p {
+      font-family: var(--serif); font-weight: 300; font-style: italic;
+      font-size: 21px; line-height: 1.5; color: var(--cream-warm);
+      margin-bottom: 40px; max-width: 520px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%); z-index: 2;
+      font-family: var(--mono); font-size: 11px;
+      color: var(--cream-dim); letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .scroll-cue::after {
+      content: ''; width: 1px; height: 32px;
+      background: linear-gradient(to bottom, var(--candle-amber), transparent);
+      animation: scrollDown 2.5s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0% { transform: translateY(-10px); opacity: 0; }
+      30%, 70% { opacity: 1; }
+      100% { transform: translateY(10px); opacity: 0; }
+    }
+
+    /* ============================================================
+       SECTION SCAFFOLD
+       ============================================================ */
+    section { padding: 110px 0; position: relative; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow {
+      font-family: var(--mono); font-size: 12px;
+      color: var(--candle-amber); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(34px, 4.2vw, 52px); line-height: 1.1;
+      color: var(--cream); margin-bottom: 18px;
+      max-width: 760px;
+      letter-spacing: -0.015em;
+    }
+    .section-title em {
+      color: var(--candle-amber); font-weight: 300; font-style: italic;
+    }
+    .section-intro {
+      font-family: var(--serif); font-weight: 300; font-style: italic;
+      font-size: 19px; color: var(--text-dim);
+      max-width: 640px; margin-bottom: 60px; line-height: 1.55;
+    }
+
+    /* Bookshelf divider — subtle horizontal mark of vertical lines */
+    .bookshelf-divider {
+      position: relative; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(190, 150, 70, 0.3), transparent);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .bookshelf-divider::before,
+    .bookshelf-divider::after {
+      content: '';
+      position: absolute; top: -3px; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--candle-amber);
+      box-shadow: 0 0 14px rgba(226, 168, 71, 0.7);
+    }
+    .bookshelf-divider::before { left: 50%; transform: translateX(-50%); }
+
+    /* ============================================================
+       INTRO BLOCK — section after hero, warm welcome
+       ============================================================ */
+    .intro-block {
+      padding: 130px 0 100px;
+      background: radial-gradient(ellipse at top, rgba(226, 168, 71, 0.05), transparent 60%);
+    }
+    .intro-grid {
+      display: grid; gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+    .intro-owl {
+      position: relative;
+      display: flex; justify-content: center;
+    }
+    .intro-owl-video {
+      max-width: 360px; width: 100%; border-radius: 18px;
+      filter: drop-shadow(0 24px 56px rgba(0,0,0,0.7)) drop-shadow(0 0 80px rgba(226,168,71,0.25));
+      animation: gentleFloat 6s ease-in-out infinite;
+    }
+    .intro-owl img {
+      max-width: 360px; width: 100%;
+      filter: drop-shadow(0 24px 56px rgba(0, 0, 0, 0.7))
+              drop-shadow(0 0 80px rgba(226, 168, 71, 0.25));
+      animation: gentleFloat 6s ease-in-out infinite;
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ============================================================
+       AUDIENCE — 7 entry points
+       ============================================================ */
+    .audience-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .audience-tile {
+      position: relative;
+      padding: 30px 26px;
+      background: linear-gradient(180deg, rgba(38, 28, 16, 0.7), rgba(26, 19, 10, 0.5));
+      border: 1px solid rgba(190, 150, 70, 0.12);
+      border-radius: var(--radius);
+      text-decoration: none; color: inherit;
+      transition: all 0.35s var(--ease);
+      display: flex; flex-direction: column; justify-content: space-between;
+      min-height: 170px;
+      overflow: hidden;
+    }
+    .audience-tile::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(226, 168, 71, 0.12), transparent 60%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .audience-tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(226, 168, 71, 0.45);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5),
+                  0 0 60px rgba(226, 168, 71, 0.06);
+    }
+    .audience-tile:hover::before { opacity: 1; }
+    .audience-tile h4 {
+      font-family: var(--serif); font-weight: 500; font-size: 19px;
+      color: var(--cream); margin-bottom: 10px; position: relative;
+    }
+    .audience-tile p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.55; position: relative;
+    }
+    .audience-tile-arrow {
+      align-self: flex-end; color: var(--candle-amber);
+      font-family: var(--serif); font-size: 22px;
+      transition: transform 0.3s var(--ease); position: relative;
+    }
+    .audience-tile:hover .audience-tile-arrow { transform: translateX(6px); }
+    .audience-tile.is-soon { opacity: 0.7; }
+    .audience-tile.is-soon h4 em {
+      font-size: 11px; font-style: normal;
+      font-family: var(--mono); color: var(--candle-amber);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-left: 10px; vertical-align: middle;
+    }
+
+    /* ============================================================
+       RESOURCES — library shelf treatment
+       ============================================================ */
+    .resources-section {
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(26, 19, 10, 0.5) 50%, transparent 100%);
+    }
+    .resources-block {
+      background:
+        linear-gradient(180deg, rgba(38, 28, 16, 0.7), rgba(26, 19, 10, 0.5));
+      border: 1px solid rgba(190, 150, 70, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 64px 52px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    }
+    .resources-block::before {
+      content: ''; position: absolute;
+      top: -40%; right: -10%; width: 60%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(226, 168, 71, 0.18), transparent 60%);
+      filter: blur(60px); pointer-events: none;
+    }
+    .resources-block > * { position: relative; z-index: 1; }
+    .resources-header {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end;
+      gap: 28px; margin-bottom: 50px;
+    }
+    /* ============================================================
+       v9.1 BOOK SPINES variant — actual books on a shelf
+       ============================================================ */
+    .bookshelf {
+      position: relative;
+      padding: 50px 0 0;
+      perspective: 1600px;
+    }
+    .bookshelf-row {
+      display: flex; align-items: flex-end; justify-content: center;
+      gap: 2px; flex-wrap: wrap;
+      padding: 0 8px 18px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .bookshelf-row::after {
+      content: ''; position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 16px;
+      background: linear-gradient(180deg, rgba(60, 40, 20, 0.9) 0%, rgba(40, 26, 12, 0.95) 60%, rgba(20, 12, 6, 1) 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(226, 168, 71, 0.18);
+      border-radius: 2px;
+    }
+    .bookshelf-row::before {
+      content: ''; position: absolute;
+      left: 10%; right: 10%; bottom: 18px; height: 30px; pointer-events: none;
+      background: radial-gradient(ellipse at center top, rgba(226, 168, 71, 0.18), transparent 70%);
+      filter: blur(10px);
+    }
+    /* ============================================================
+       v9.2 BOOK SPINES — bound-book look · headbands · raised bands
+       ============================================================ */
+    .book {
+      position: relative; flex: 0 0 auto;
+      border-radius: 1px 3px 3px 1px;
+      text-decoration: none;
+      transition: transform 0.35s var(--ease), filter 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      transform-origin: bottom center; cursor: pointer;
+      display: flex; flex-direction: column; align-items: stretch;
+      padding: 0; overflow: hidden;
+      box-shadow:
+        inset -2px 0 4px rgba(0, 0, 0, 0.45),
+        inset 2px 0 3px rgba(255, 255, 255, 0.06),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+    /* Width variations — real shelves are never uniform */
+    .book.bk-w1 { width: 62px; }
+    .book.bk-w2 { width: 62px; }
+    .book.bk-w3 { width: 62px; }
+    .book.bk-w4 { width: 62px; }
+    /* Subtle cloth/linen weave + side-edge shading */
+    .book::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.07) 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px);
+      opacity: 0.7; pointer-events: none; z-index: 1;
+    }
+    .book::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.10) 0%, transparent 10%, transparent 86%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    /* Headband + tail cap — fabric strip at top and bottom of spine */
+    .book-cap {
+      position: relative; width: 100%; height: 7px;
+      flex-shrink: 0; z-index: 3;
+      border-top: 1px solid rgba(0,0,0,0.5);
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+    }
+    .book-cap.top {
+      background: linear-gradient(180deg, var(--cap-color, #C8924A) 0%, rgba(120,76,28,0.85) 65%, rgba(38,22,8,0.95) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,210,140,0.35);
+    }
+    .book-cap.bot {
+      background: linear-gradient(0deg, var(--cap-color, #C8924A) 0%, rgba(120,76,28,0.85) 65%, rgba(38,22,8,0.95) 100%);
+      box-shadow: inset 0 -1px 0 rgba(255,210,140,0.35);
+    }
+    /* Vertical title panel — fills the spine below the seal */
+    .book-title {
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      font-family: var(--serif); font-weight: 500;
+      font-size: 12px; line-height: 1.15;
+      color: var(--ink-color, #E6C68A);
+      letter-spacing: 0.05em; text-align: center;
+      flex: 1; padding: 12px 0 18px; align-self: center;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.7), 0 0 4px rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    /* Big Ejoshi seal — character-forward mark at top of each spine */
+    .book-mark {
+      position: relative; width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 237, 200, 0.12);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 237, 200, 0.28),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.5);
+      display: flex; align-items: center; justify-content: center;
+      margin: 14px 0 6px;
+      align-self: center;
+      flex-shrink: 0; z-index: 3;
+      transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .book-mark .book-icon {
+      width: 28px; height: 28px; opacity: 0.92;
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), filter 0.3s var(--ease);
+    }
+    .book-icon.ink-gold {
+      filter: brightness(0) saturate(100%) invert(86%) sepia(38%) saturate(420%) hue-rotate(348deg) brightness(108%) contrast(96%);
+    }
+    .book-icon.ink-cream {
+      filter: brightness(0) saturate(100%) invert(96%) sepia(13%) saturate(280%) hue-rotate(347deg) brightness(108%) contrast(94%);
+    }
+    .book:hover .book-mark {
+      background: rgba(255, 237, 200, 0.22);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 237, 200, 0.42),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 237, 200, 0.32);
+    }
+    .book:hover .book-mark .book-icon { opacity: 1; transform: scale(1.1); }
+    .book:hover .book-title { color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.7), 0 0 10px rgba(255,220,150,0.4); }
+
+    /* Hover lift */
+    .book:hover {
+      transform: translateY(-22px) rotate(-3deg);
+      filter: brightness(1.15);
+      box-shadow:
+        inset -2px 0 4px rgba(0, 0, 0, 0.4),
+        inset 2px 0 3px rgba(255, 255, 255, 0.08),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 24px 36px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(226, 168, 71, 0.22);
+      z-index: 5;
+    }
+
+    /* Heights — staggered for organic shelf (supporting books, shorter band) */
+    .book.h1 { height: 300px; }
+    .book.h2 { height: 300px; }
+    .book.h3 { height: 300px; }
+    .book.h4 { height: 300px; }
+    .book.h5 { height: 300px; }
+    .book.h6 { height: 300px; }
+    .book.h7 { height: 300px; }
+    .book.h8 { height: 300px; }
+
+    /* Supporting books — smaller seal so the flagship leads the eye */
+    .book:not(.bk-hero) .book-mark { width: 34px; height: 34px; margin: 11px 0 5px; }
+    .book:not(.bk-hero) .book-mark .book-icon { width: 22px; height: 22px; }
+
+    /* Flagship — brighter cap + warm glow halo (no width change) */
+    .book.cat-start {
+      box-shadow:
+        inset -2px 0 4px rgba(0, 0, 0, 0.4),
+        inset 2px 0 3px rgba(255, 255, 255, 0.18),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 14px 28px rgba(0, 0, 0, 0.6),
+        0 0 32px rgba(226, 168, 71, 0.32);
+    }
+    .book.cat-start .book-title { color: #FFEDC8; font-weight: 600; font-size: 13px; }
+    .book.cat-start .book-cap { --cap-color: #E6C68A; }
+    .book.cat-start .book-mark {
+      background: rgba(255, 237, 200, 0.26);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 237, 200, 0.5),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 0 22px rgba(226, 168, 71, 0.55);
+    }
+    .book.cat-start .book-mark .book-icon { opacity: 1; }
+
+    /* Flagship hero — one big book that anchors the shelf (paired with cat-start glow) */
+    .book.bk-hero { width: 112px; height: 392px; border-radius: 1px 4px 4px 1px; }
+    .book.bk-hero .book-mark { width: 60px; height: 60px; margin: 20px 0 10px; }
+    .book.bk-hero .book-mark .book-icon { width: 40px; height: 40px; }
+    .book.bk-hero .book-title { font-size: 15px; padding: 14px 0 22px; }
+    .book.bk-hero .book-cap { height: 9px; }
+
+    /* Per-book story colors */
+    .book.bk-hearth     { background: linear-gradient(90deg, #3A1F08 0%, #D88A30 50%, #3A1F08 100%); }    /* warm fire to gather around */
+    .book.bk-ink        { background: linear-gradient(90deg, #0A1224 0%, #2D4570 50%, #0A1224 100%); }   /* ink blue · writing & craft */
+    .book.bk-forest     { background: linear-gradient(90deg, #0A1810 0%, #3A6045 50%, #0A1810 100%); }   /* forest · thoughtful, growing */
+    .book.bk-terracotta { background: linear-gradient(90deg, #2A1208 0%, #B86838 50%, #2A1208 100%); }   /* terracotta · home, hearth */
+    .book.bk-bordeaux   { background: linear-gradient(90deg, #1F0A0A 0%, #6E2A2A 50%, #1F0A0A 100%); }   /* bordeaux · academic, classical */
+    .book.bk-chalk      { background: linear-gradient(90deg, #1A2028 0%, #5A6B7A 50%, #1A2028 100%); }   /* chalk blue · classroom */
+    .book.bk-sienna     { background: linear-gradient(90deg, #260D05 0%, #A05028 50%, #260D05 100%); }   /* burnt sienna · workshop, craft */
+    .book.bk-slate      { background: linear-gradient(90deg, #1A1D24 0%, #4A4F58 50%, #1A1D24 100%); }   /* slate · calm reading */
+    .book.bk-moss       { background: linear-gradient(90deg, #102015 0%, #5A7050 50%, #102015 100%); }   /* moss · steady habit */
+    .bookshelf-caption {
+      margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 10.5px;
+      color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .legend-swatch {
+      width: 14px; height: 14px; border-radius: 2px;
+      box-shadow: inset -1px 0 2px rgba(0,0,0,0.4);
+    }
+    .legend-swatch.cat-start { background: linear-gradient(180deg, #D88A30, #8B4810); }
+    .legend-swatch.cat-foundational { background: linear-gradient(180deg, #BFA66E, #8B7740); }
+    .legend-swatch.cat-family { background: linear-gradient(180deg, #8B2A2A, #4A0E0E); }
+    .legend-swatch.cat-educator { background: linear-gradient(180deg, #2E3D78, #14193A); }
+    .legend-swatch.cat-builder { background: linear-gradient(180deg, #7A4F22, #3F260A); }
+    .legend-swatch.cat-everyday { background: linear-gradient(180deg, #8C816A, #5A5040); }
+    .bookshelf-titles {
+      margin-top: 30px; display: grid; gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); font-size: 13px;
+    }
+    .bookshelf-titles-item {
+      padding: 12px 14px;
+      background: rgba(8, 5, 10, 0.45);
+      border: 1px solid rgba(230, 215, 180, 0.08);
+      border-radius: 8px; color: var(--cream);
+    }
+    .bookshelf-titles-item strong {
+      font-family: var(--serif); font-weight: 500; display: block; margin-bottom: 2px;
+    }
+    .bookshelf-titles-item em {
+      font-style: italic; font-weight: 300; color: var(--text-dim); font-size: 12.5px;
+    }
+    @media (max-width: 720px) {
+      .bookshelf-row {
+        flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+        scroll-snap-type: x mandatory; padding-bottom: 26px;
+      }
+      .book { scroll-snap-align: start; }
+    }
+
+    /* ============================================================
+       BOTTOM 3D SECTION — embers + perspective CTA + bookshelf horizon
+       ============================================================ */
+    .bottom-stage {
+      position: relative;
+      perspective: 1400px;
+      overflow: hidden;
+      padding: 40px 0 0;
+    }
+
+    /* Bookshelf depth backdrop — silhouetted vertical bands fading into shadow */
+    .bottom-stage::before {
+      content: ''; position: absolute;
+      inset: 0; z-index: 0;
+      background:
+        repeating-linear-gradient(90deg,
+          transparent 0,
+          transparent 80px,
+          rgba(38, 28, 16, 0.45) 80px,
+          rgba(38, 28, 16, 0.45) 84px,
+          transparent 84px,
+          transparent 160px,
+          rgba(26, 19, 10, 0.6) 160px,
+          rgba(26, 19, 10, 0.6) 168px
+        ),
+        linear-gradient(180deg, transparent 0%, rgba(8, 5, 10, 0.7) 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.85) 100%);
+      pointer-events: none;
+      transform: translateZ(-200px) scale(1.15);
+    }
+
+    /* Warm horizon glow at the very bottom — candle floor of the library */
+    .bottom-stage::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 320px;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(226, 168, 71, 0.22), transparent 65%),
+        radial-gradient(ellipse at 20% 100%, rgba(190, 100, 30, 0.12), transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(226, 168, 71, 0.12), transparent 50%);
+      pointer-events: none; z-index: 1;
+      filter: blur(20px);
+    }
+
+    /* Floating amber embers — atmospheric particles from the video aesthetic */
+    .embers {
+      position: absolute; inset: 0;
+      pointer-events: none; z-index: 2;
+      overflow: hidden;
+    }
+    .ember {
+      position: absolute; bottom: -10px;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--candle-amber);
+      box-shadow: 0 0 12px var(--candle-amber), 0 0 24px rgba(226, 168, 71, 0.5);
+      opacity: 0;
+      animation-name: emberRise;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    .ember:nth-child(1)  { left: 8%;  width: 3px; height: 3px; animation-duration: 14s; animation-delay: 0s; }
+    .ember:nth-child(2)  { left: 17%; width: 5px; height: 5px; animation-duration: 18s; animation-delay: 2s; }
+    .ember:nth-child(3)  { left: 26%; width: 3px; height: 3px; animation-duration: 16s; animation-delay: 5s; }
+    .ember:nth-child(4)  { left: 35%; width: 4px; height: 4px; animation-duration: 20s; animation-delay: 1s; }
+    .ember:nth-child(5)  { left: 44%; width: 6px; height: 6px; animation-duration: 22s; animation-delay: 3s; opacity: 0.9; }
+    .ember:nth-child(6)  { left: 53%; width: 3px; height: 3px; animation-duration: 15s; animation-delay: 7s; }
+    .ember:nth-child(7)  { left: 62%; width: 4px; height: 4px; animation-duration: 19s; animation-delay: 4s; }
+    .ember:nth-child(8)  { left: 71%; width: 5px; height: 5px; animation-duration: 17s; animation-delay: 6s; }
+    .ember:nth-child(9)  { left: 80%; width: 3px; height: 3px; animation-duration: 21s; animation-delay: 0s; }
+    .ember:nth-child(10) { left: 89%; width: 4px; height: 4px; animation-duration: 16s; animation-delay: 4s; }
+    .ember:nth-child(11) { left: 12%; width: 4px; height: 4px; animation-duration: 23s; animation-delay: 9s; }
+    .ember:nth-child(12) { left: 38%; width: 3px; height: 3px; animation-duration: 20s; animation-delay: 11s; }
+    .ember:nth-child(13) { left: 67%; width: 5px; height: 5px; animation-duration: 17s; animation-delay: 8s; }
+    .ember:nth-child(14) { left: 92%; width: 3px; height: 3px; animation-duration: 19s; animation-delay: 2s; }
+    @keyframes emberRise {
+      0% { transform: translate3d(0, 0, 0) scale(0.7); opacity: 0; }
+      8% { opacity: 0.85; }
+      40% { transform: translate3d(-20px, -45vh, 0) scale(1); }
+      70% { transform: translate3d(15px, -75vh, 0) scale(0.85); opacity: 0.5; }
+      100% { transform: translate3d(-10px, -110vh, 0) scale(0.4); opacity: 0; }
+    }
+
+    /* CTA — Join the list, now with perspective lift */
+    .cta-block {
+      text-align: center; padding: 90px 40px;
+      max-width: 760px; margin: 0 auto;
+      position: relative; z-index: 3;
+      transform-style: preserve-3d;
+      transition: transform 0.6s var(--ease);
+    }
+    .cta-card {
+      position: relative;
+      padding: 70px 48px 60px;
+      background:
+        linear-gradient(180deg,
+          rgba(38, 28, 16, 0.85) 0%,
+          rgba(26, 19, 10, 0.75) 100%);
+      border: 1px solid rgba(226, 168, 71, 0.28);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(20px);
+      box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.65),
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(226, 168, 71, 0.08),
+        inset 0 1px 0 rgba(255, 230, 180, 0.08);
+      transform: translateZ(40px) rotateX(0deg);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      transform-style: preserve-3d;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(226, 168, 71, 0.4), transparent 50%, rgba(226, 168, 71, 0.2));
+      z-index: -1;
+      opacity: 0.5;
+    }
+    .cta-card::after {
+      content: ''; position: absolute;
+      top: 18%; left: -8%; width: 30%; height: 60%;
+      background: radial-gradient(ellipse, rgba(226, 168, 71, 0.18), transparent 70%);
+      filter: blur(40px); pointer-events: none;
+    }
+    .cta-block:hover .cta-card {
+      transform: translateZ(60px) rotateX(2deg);
+      box-shadow:
+        0 50px 120px rgba(0, 0, 0, 0.75),
+        0 30px 70px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(226, 168, 71, 0.15),
+        inset 0 1px 0 rgba(255, 230, 180, 0.12);
+    }
+    .cta-block > * { position: relative; z-index: 1; }
+    .cta-block h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(34px, 4.5vw, 50px); line-height: 1.12;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .cta-block h2 em { color: var(--candle-amber); font-weight: 300; }
+    .cta-block p {
+      font-family: var(--serif); font-style: italic; font-weight: 300;
+      color: var(--text-dim); font-size: 18px; margin-bottom: 36px;
+    }
+    .email-form {
+      display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap;
+    }
+    .email-form input[type="email"] {
+      flex: 1; min-width: 220px;
+      background: rgba(26, 19, 10, 0.85); border: 1px solid rgba(226, 168, 71, 0.25);
+      color: var(--cream); padding: 14px 22px; border-radius: 999px;
+      font-family: var(--sans); font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .email-form input[type="email"]:focus {
+      outline: none; border-color: var(--candle-amber);
+      box-shadow: 0 0 0 4px rgba(226, 168, 71, 0.15);
+    }
+
+    /* ============================================================
+       FOOTER — bookshelf horizon
+       ============================================================ */
+    footer {
+      position: relative;
+      padding: 80px 32px 40px;
+      margin-top: 40px;
+      z-index: 3;
+    }
+    /* Bookshelf top line — subtle horizon */
+    footer::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background:
+        linear-gradient(90deg,
+          transparent 0%,
+          rgba(226, 168, 71, 0.6) 30%,
+          var(--candle-amber) 50%,
+          rgba(226, 168, 71, 0.6) 70%,
+          transparent 100%);
+      box-shadow: 0 0 28px rgba(226, 168, 71, 0.4);
+    }
+    /* Subtle book-stack silhouettes along the bottom */
+    footer::after {
+      content: ''; position: absolute;
+      top: 2px; left: 0; right: 0; height: 18px;
+      background:
+        repeating-linear-gradient(90deg,
+          transparent 0, transparent 24px,
+          rgba(38, 28, 16, 0.7) 24px, rgba(38, 28, 16, 0.7) 27px,
+          transparent 27px, transparent 56px,
+          rgba(26, 19, 10, 0.5) 56px, rgba(26, 19, 10, 0.5) 60px
+        );
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
+      pointer-events: none;
+    }
+    .footer-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; gap: 36px;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand img { width: 42px; }
+    .footer-name { font-family: var(--serif); font-size: 19px; color: var(--cream); }
+    .footer-tagline {
+      font-family: var(--serif); font-style: italic; font-weight: 300;
+      color: var(--text-muted); font-size: 13px; margin-top: 6px;
+    }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--candle-amber); }
+    .footer-meta {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--text-muted); letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+       ============================================================ */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal.delay-1 { transition-delay: 0.1s; }
+    .reveal.delay-2 { transition-delay: 0.2s; }
+    .reveal.delay-3 { transition-delay: 0.3s; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .hero { min-height: 90vh; }
+      .hero-inner { padding: 110px 24px 60px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .intro-owl img { max-width: 280px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-cta .btn { padding: 10px 18px; font-size: 13px; }
+      .scroll-cue { display: none; }
+      section { padding: 70px 0; }
+      .resources-block { padding: 40px 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: clamp(34px, 9vw, 46px); }
+      .hero p { font-size: 17px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; text-align: left; }
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-video { display: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  
+    /* ============================================================
+       v9.1 3D DEPTH PASS — Design Inspector direction (2026-05-29)
+       "Not more spectacle — more material depth." Restrained, on-canon.
+       ============================================================ */
+    /* Hero — library alcove: deepen the edges so the copy sits in a recess */
+    .hero { box-shadow: inset 0 -70px 90px -50px rgba(0,0,0,0.72),
+                        inset 0 70px 90px -55px rgba(0,0,0,0.5); }
+    .hero-inner::before {
+      content: ''; position: absolute; inset: -6% -4% auto -4%; height: 70%;
+      z-index: -1; pointer-events: none; opacity: 0.5;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 116px, rgba(190,150,70,0.05) 116px 118px),
+        linear-gradient(180deg, rgba(226,168,71,0.05), transparent 72%);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent);
+              mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent);
+    }
+
+    /* Intro — embossed book-board panel around the brand-promise copy */
+    .intro-grid > div:not(.intro-owl) {
+      position: relative;
+      background: linear-gradient(180deg, rgba(38,28,16,0.55), rgba(18,12,7,0.5));
+      border: 1px solid rgba(190,150,70,0.16);
+      border-radius: var(--radius-lg);
+      padding: 44px 42px;
+      box-shadow: inset 0 1px 0 rgba(255,230,180,0.10),
+                  inset 0 0 0 1px rgba(0,0,0,0.30),
+                  0 30px 64px rgba(0,0,0,0.45);
+    }
+    .intro-grid > div:not(.intro-owl)::after {
+      content: ''; position: absolute; inset: 7px; border-radius: 16px;
+      border: 1px solid rgba(190,150,70,0.18); pointer-events: none;
+    }
+
+    /* Audience tiles — standing book-plates: bronze spine edge + subtle tilt */
+    .audience-grid { perspective: 1100px; }
+    .audience-tile { border-left: 3px solid rgba(190,150,70,0.38); transform-style: preserve-3d; }
+    .audience-tile:hover { transform: translateY(-4px) rotateX(3deg) rotateY(-2deg); }
+
+    /* CTA — shelf ledge with a raised headband cap beneath the card */
+    .cta-block { position: relative; }
+    .cta-block::after {
+      content: ''; position: absolute; left: 7%; right: 7%; bottom: 2px; height: 16px; z-index: 0;
+      background: linear-gradient(180deg, rgba(60,40,20,0.95) 0%, rgba(40,26,12,0.96) 55%, rgba(20,12,6,1) 100%);
+      border-radius: 2px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.6), inset 0 1px 0 rgba(226,168,71,0.28);
+    }
+
+  
+    /* ===== Animation Director motion layer (2026-05-29) — calm, library-native ===== */
+    /* Book-pull hover: the recommended best motion — spine slides forward off the shelf */
+    .bookshelf-row { perspective: 1700px; }
+    .book:hover, .book:focus-visible {
+      transform: translateY(-6px) translateZ(22px) rotate(-2deg) !important;
+      z-index: 6;
+    }
+    /* CTA shelf-ledge: very slow amber candle-glow breathing */
+    .cta-block::after { animation: ledgeGlow 7s ease-in-out infinite; }
+    @keyframes ledgeGlow {
+      0%, 100% { box-shadow: 0 12px 26px rgba(0,0,0,0.6), inset 0 1px 0 rgba(226,168,71,0.20); }
+      50%      { box-shadow: 0 14px 30px rgba(0,0,0,0.62), inset 0 1px 0 rgba(226,168,71,0.40); }
+    }
+    /* Audience book-plate: gentle lift toward the reader on hover/focus */
+    .audience-tile:focus-visible { transform: translateY(-4px) rotateX(3deg) rotateY(-2deg); outline: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .cta-block::after { animation: none !important; }
+      .book:hover, .book:focus-visible { transform: translateY(-4px) !important; }
+    }
+
+  </style>
+<style>.nav-brand img{width:48px!important;height:48px!important}footer .footer-brand img{width:56px!important}</style>
 </head>
 <body>
 
@@ -42,7 +958,7 @@
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
     <a class="nav-brand" href="index.html" aria-label="Ejoshi home">
-      <img src="assets/img/ejoshi-icon.svg" alt="" aria-hidden="true">
+      <img src="assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true">
       <span class="nav-brand-text">Ejoshi</span>
     </a>
     <ul class="nav-links">
@@ -53,289 +969,317 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <button class="lang-toggle" aria-label="Switch to Simplified Chinese">中文</button>
-      <a class="btn btn-gold" href="#join">Join the List</a>
+      <a class="lang-toggle" href="index_cn.html" aria-label="Switch to Simplified Chinese">中文</a>
+      <a class="btn btn-candle" href="#join">Join the list</a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
 </nav>
 
-
 <main id="main-content">
-<!-- ============================================================
-     1. HERO
-     ============================================================ -->
-<header class="hero">
-  <div class="wrap">
-    <img class="hero-owl" src="assets/img/ejoshi-owl-graduation.png?v=20260527owl" alt="The Ejoshi Owl — the brand's calm, wise companion for AI learning" loading="eager" width="240" height="240">
-    <span class="eyebrow">An AI Education &amp; Lifestyle Brand</span>
-    <h1>AI should work for your everyday life.</h1>
-    <p class="lead mx-auto">Ejoshi helps you learn how — simply, practically, and without a paywall.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-gold" href="#join">Join the Ejoshi List</a>
-      <a class="btn btn-outline" href="videos.html">Watch EjoshiTV</a>
-    </div>
-    <p class="hero-brand-line"><em>Made for the Ones Who Move Different.</em></p>
-  </div>
-</header>
 
-<!-- ============================================================
-     2. MISSION
-     ============================================================ -->
-<section id="mission">
-  <div class="wrap-prose">
-    <span class="eyebrow">What Ejoshi is</span>
-    <h2>An AI education brand, built like a family.</h2>
-    <p class="lead mt-3">Ejoshi is an AI education brand built around a family promise — that every family, and every person willing to start, would have a clear way to learn AI as it rewrites the world. Simply, practically, and in plain language. <a href="about.html" class="link-arrow-inline">Read the origin →</a></p>
-    <p class="lead mt-3">We&rsquo;re early days, building in public — a learning platform, a community, and a lifestyle brand growing piece by piece. Each one carries the same idea: AI is not for the few. It is for the ones who decide to learn. The future should not be locked behind a paywall.</p>
-    <p class="lead mt-3">Ejoshi is free to access. No paywall. No gatekeeping. If that sounds like you, you&rsquo;re already on the right page.</p>
-  </div>
-</section>
+  <!-- ============================================================
+       HERO — video library scene
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-video-fallback" aria-hidden="true"></div>
+    <video
+      class="hero-video"
+      autoplay muted loop playsinline
+      poster="assets/video/ejoshi-ai-learning-library-hero-poster.jpg"
+      aria-hidden="true">
+      <source src="assets/video/ejoshi-ai-learning-library-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-vignette" aria-hidden="true"></div>
 
-<!-- ============================================================
-     3. AUDIENCE PATHWAYS
-     ============================================================ -->
-<section id="audiences">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Who Ejoshi is For</span>
-        <h2>One movement. Different doors in.</h2>
-        <p class="lead mt-3">Ejoshi serves the curious from every walk of life. Each pathway carries lessons, prompts, and resources written for where you actually are.</p>
-      </div>
-    </div>
-    <div class="grid grid-3">
-      <article class="card">
-        <span class="card-eyebrow">Pathway · 01</span>
-        <h3>Young Learners</h3>
-        <p>Learn how to ask better questions, study smarter, and use AI as a sidekick — without losing your own thinking.</p>
-        <a class="link-arrow" href="learners-young.html">Explore</a>
-      </article>
-      <article class="card">
-        <span class="card-eyebrow">Pathway · 02</span>
-        <h3>Everyday Learners</h3>
-        <p>Save time at work, write clearer emails, and turn AI into a quiet helper that fits the way you already live.</p>
-        <a class="link-arrow" href="learners-everyday.html">Explore</a>
-      </article>
-      <article class="card">
-        <span class="card-eyebrow">Pathway · 03</span>
-        <h3>Parents &amp; Families</h3>
-        <p>Bring AI into the house in a way that helps homework, routines, and curiosity — not screen-time fights.</p>
-        <a class="link-arrow" href="families.html">Explore</a>
-      </article>
-      <article class="card">
-        <span class="card-eyebrow">Pathway · 04</span>
-        <h3>Educators</h3>
-        <p>Use AI in the classroom without losing your voice. Lesson plans, discussion guides, and prompts that respect the craft.</p>
-        <a class="link-arrow" href="educators.html">Explore</a>
-      </article>
-      <article class="card">
-        <span class="card-eyebrow">Pathway · 05</span>
-        <h3>Builders &amp; Business Owners</h3>
-        <p>Ship faster with fewer people. Practical workflows, templates, and prompts for the work you actually do.</p>
-        <a class="link-arrow" href="builders.html">Explore</a>
-      </article>
-      <article class="card">
-        <span class="card-eyebrow">Pathway · 06</span>
-        <h3>Lifelong Learners</h3>
-        <p>Walk into the AI era with calm confidence. Plain-language lessons that respect what you already know.</p>
-        <a class="link-arrow" href="resources.html">Explore</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     4. RESOURCE LIBRARY PREVIEW
-     ============================================================ -->
-<section id="resources">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Resource Library</span>
-        <h2>The first lesson is here. The rest is on the way.</h2>
-        <p class="lead mt-3">Ejoshi is being built in public, one piece at a time. The first downloadable resource is live — the Starter Kit. New lessons, prompts, and guides land as they&rsquo;re ready, never before. Free to access. No paywall.</p>
-      </div>
-      <div class="right">
-        <a class="btn btn-outline" href="resources.html">See what&rsquo;s live</a>
-      </div>
-    </div>
-    <div class="grid grid-3">
-      <article class="card resource-card">
-        <div class="resource-meta">
-          <span>Starter Kit</span><span>Live now</span><span>PDF</span>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">// AI, made for everyday humans</span>
+        <h1>The calm place to <span class="accent">learn AI.</span></h1>
+        <p>Practical lessons, open resources, and a quiet corner of the internet — for the ones figuring out how AI fits into work, family, learning, and everyday life.</p>
+        <div class="hero-cta-row">
+          <a class="btn btn-candle" href="#join">Join the free list →</a>
+          <a class="btn btn-ghost" href="resources.html">Browse resources</a>
         </div>
-        <h3>The Ejoshi AI Starter Kit</h3>
-        <p>The foundational guide. Five ways to use AI well in your week, with prompts you can paste into any tool. Join the email list — the kit lands in your inbox.</p>
-        <a class="link-arrow" href="#join">Get the kit</a>
-      </article>
-      <article class="card resource-card resource-soon">
-        <div class="resource-meta">
-          <span>In the works</span><span>Coming next</span><span>PDF</span>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTRO — warm welcome with Owl character moment
+       ============================================================ -->
+  <section class="intro-block">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-owl reveal">
+          <video class="intro-owl-video" autoplay muted loop playsinline poster="assets/video/ejoshi-owl-flying-poster.jpg" aria-label="Ejoshi owl">
+            <source src="assets/video/ejoshi-owl-flying.mp4" type="video/mp4">
+          </video>
         </div>
-        <h3>Prompt Like a Pro</h3>
-        <p>The first skill everyone needs: how to ask AI a question the way you&rsquo;d ask a thoughtful expert. We&rsquo;ll ship it when it&rsquo;s ready.</p>
-        <span class="link-arrow link-arrow-muted" aria-disabled="true">Building</span>
-      </article>
-      <article class="card resource-card resource-soon">
-        <div class="resource-meta">
-          <span>In the works</span><span>Coming</span><span>PDF</span>
+        <div>
+          <span class="section-eyebrow reveal">// Made for the ones who move different</span>
+          <h2 class="section-title reveal">A quiet place to <em>learn the future.</em></h2>
+          <p class="section-intro reveal">No hype. No gatekeeping. Just plain-language AI lessons, open resources, and practical next steps for real life. Start where you are. Take what helps. Come back when you are ready.</p>
+          <a class="btn btn-ghost reveal" href="about.html">Read the story →</a>
         </div>
-        <h3>More resources are being built</h3>
-        <p>Guides for families, lessons for classrooms, templates for small operators. They show up here the day they&rsquo;re ready. Join the list — you&rsquo;ll be the first to know.</p>
-        <a class="link-arrow" href="#join">Join the list</a>
-      </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     5. EJOSHITV
-     ============================================================ -->
-<section id="ejoshitv">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">EjoshiTV</span>
-        <h2>Built with AI: Building Ejoshi.</h2>
-        <p class="lead mt-3">A YouTube series in production right now. Hybrid format — an owl-led brand presenter on-screen + documentary-style teaching segments. Each episode teaches one AI skill through a real Ejoshi task. First episodes ship when they&rsquo;re ready.</p>
-      </div>
-      <div class="right">
-        <a class="btn btn-outline" href="https://www.youtube.com/@EjoshiTV" target="_blank" rel="noopener">Subscribe on YouTube</a>
-      </div>
-    </div>
-    <div class="ejoshitv-soon">
-      <p class="lead">The channel is live at <a href="https://www.youtube.com/@EjoshiTV" target="_blank" rel="noopener">@EjoshiTV</a>. The first episodes are in production. When they drop, you&rsquo;ll see them here — and on the email list first.</p>
-      <p class="lead mt-3">No countdown. No release date theater. We&rsquo;ll ship them when they&rsquo;re good.</p>
-    </div>
-  </div>
-</section>
+  <div class="bookshelf-divider"></div>
 
-<!-- ============================================================
-     6. EMAIL CAPTURE
-     ============================================================ -->
-<section id="join" class="cream-mode">
-  <div class="wrap-prose text-center">
-    <span class="eyebrow">Join the Ejoshi List</span>
-    <h2>Get the next practical AI lesson.</h2>
-    <p class="lead mx-auto mt-3">Helpful lessons, one at a time. Start when you are ready. Prompts, guides, and resources written by a person, for people. The future should not be locked behind a paywall. Ejoshi resources are free to access because learning the future should be available to anyone willing to start.</p>
-    <form class="email-form mt-5"
-          action="https://embeds.beehiiv.com/REPLACE_WITH_BEEHIIV_PUBLICATION_ID"
-          method="post"
-          data-success-msg="Thanks. The next lesson lands in your inbox soon.">
-      <label for="email-home" class="sr-only">Your email</label>
-      <input id="email-home" type="email" name="email" placeholder="you@yourdomain.com" required autocomplete="email">
-      <button class="btn btn-gold" type="submit">Join the List</button>
-    </form>
-    <p class="email-microcopy">We send the next lesson. Unsubscribe any time. We will never sell or share your email.</p>
-  </div>
-</section>
+  <!-- ============================================================
+       AUDIENCE — 7 entry points
+       ============================================================ -->
+  <section>
+    <div class="container">
+      <span class="section-eyebrow reveal">// Find your shelf</span>
+      <h2 class="section-title reveal">Seven ways in.</h2>
+      <p class="section-intro reveal">Start with the path that feels closest to your life right now.</p>
 
-<!-- ============================================================
-     7. BRAND VALUES
-     ============================================================ -->
-<section id="values">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">What Ejoshi Believes</span>
-        <h2>The future, made practical.</h2>
+      <div class="audience-grid">
+        <a class="audience-tile reveal" href="ai-for-students.html" data-tilt>
+          <div>
+            <h4>Young Learners</h4>
+            <p>Discovering AI for the first time. Curious, capable, ready.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
+        <a class="audience-tile reveal delay-1" href="ai-for-everyday-life.html" data-tilt>
+          <div>
+            <h4>Everyday Learners</h4>
+            <p>AI for daily life — calmly, practically, without overload.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
+        <a class="audience-tile reveal delay-2" href="ai-for-parents.html" data-tilt>
+          <div>
+            <h4>Parents & Families</h4>
+            <p>Bring AI into the home with confidence, not anxiety.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
+        <a class="audience-tile reveal delay-3" href="ai-for-teachers.html" data-tilt>
+          <div>
+            <h4>Educators</h4>
+            <p>For teachers ready to lead the AI conversation in class.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
+        <a class="audience-tile reveal" href="ai-for-small-business.html" data-tilt>
+          <div>
+            <h4>Builders & Business</h4>
+            <p>Make AI work for your side-hustle, business, or product.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
+        <a class="audience-tile reveal delay-1 is-soon" href="learn-ai-for-free.html" data-tilt>
+          <div>
+            <h4>Lifelong Learners <em>soon</em></h4>
+            <p>Stay sharp as the world keeps changing.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
+        <a class="audience-tile reveal delay-2 is-soon" href="ai-learning-community.html" data-tilt>
+          <div>
+            <h4>Community Learners <em>soon</em></h4>
+            <p>Learn together — cohorts, study groups, real conversations.</p>
+          </div>
+          <span class="audience-tile-arrow">→</span>
+        </a>
       </div>
     </div>
-    <div class="values-grid">
-      <div class="value">
-        <h3>Practical over performative</h3>
-        <p>Real examples. Real prompts. Real tools. Built for the work you actually do this week.</p>
-      </div>
-      <div class="value">
-        <h3>Warmth, always</h3>
-        <p>We sound like a wise older sibling who happens to be from the future. Calm, clear, honest.</p>
-      </div>
-      <div class="value">
-        <h3>Access over exclusivity</h3>
-        <p>AI is not for the few. Ejoshi is built so curious people anywhere can walk in and learn — no paywall, no gatekeeping.</p>
-      </div>
-      <div class="value">
-        <h3>Calm progress</h3>
-        <p>The future is moving fast. We teach you to walk with it, at your own pace, one useful skill at a time.</p>
-      </div>
-      <div class="value">
-        <h3>Family-built, not corporate</h3>
-        <p>Ejoshi is named after a family. Every decision asks: would a thoughtful parent be proud of this?</p>
-      </div>
-      <div class="value">
-        <h3>The future, made practical</h3>
-        <p>Big ideas, broken into small, useful steps. Lessons you can use this week.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     8. FINAL CTA
-     ============================================================ -->
-<section class="text-center no-rule">
-  <div class="wrap-prose">
-    <span class="eyebrow">Move Different</span>
-    <h2>AI is for the ones who decide to learn.</h2>
-    <p class="lead mx-auto mt-3">Start with one useful skill. Learn how to ask better questions, save time, and make the tool work for your life. No paywall. No gatekeeping. Join the Ejoshi list and we&rsquo;ll meet you there.</p>
-    <div class="hero-ctas mt-5">
-      <a class="btn btn-gold" href="#join">Start Learning the Future</a>
-      <a class="btn btn-outline" href="about.html">About Ejoshi</a>
+  <!-- ============================================================
+       RESOURCES — library shelf
+       ============================================================ -->
+  <section class="resources-section">
+    <div class="container">
+      <div class="resources-block reveal">
+        <div class="resources-header">
+          <div>
+            <span class="section-eyebrow">// Free, always</span>
+            <h2 class="section-title">Nine books on the shelf.</h2>
+            <p class="section-intro">Every PDF is open access — no email wall, no paywall. The future shouldn't be locked behind one.</p>
+          </div>
+          <a class="btn btn-ghost" href="resources.html">See all resources →</a>
+        </div>
+
+        <div class="bookshelf">
+          <div class="bookshelf-row">
+            <a class="book cat-start bk-hearth bk-w2 h3" href="assets/resources/ejoshi-ai-starter-kit.pdf" title="Ejoshi AI Starter Kit — Start here">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-gold" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">Ejoshi AI Starter Kit</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-ink bk-w2 h2" href="assets/resources/prompt-like-a-pro.pdf" title="Prompt Like a Pro">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-cream" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">Prompt Like a Pro</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-forest bk-w2 h6" href="assets/resources/better-questions.pdf" title="Better Questions">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-gold" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">Better Questions</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-terracotta bk-w3 h3" href="assets/resources/family-ai-guide.pdf" title="Family AI Guide">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-gold" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">Family AI Guide</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-bordeaux bk-w3 h8" href="assets/resources/discussion-guide-ai-classroom.pdf" title="Discussion Guide — AI in the Classroom">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-gold" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">Discussion Guide — AI in Classroom</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-chalk bk-w1 h5" href="assets/resources/first-ai-lesson.pdf" title="A First AI Lesson">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-cream" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">A First AI Lesson</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-sienna bk-w2 h7" href="assets/resources/one-person-workflow.pdf" title="The One-Person AI Workflow">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-gold" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">The One-Person AI Workflow</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-slate bk-w1 h3" href="assets/resources/how-to-read-about-ai.pdf" title="How to Read About AI">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-cream" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">How to Read About AI</span>
+              <span class="book-cap bot"></span>
+            </a>
+            <a class="book bk-moss bk-w2 h1" href="assets/resources/weekly-ai-checkin.pdf" title="Weekly AI Check-In">
+              <span class="book-cap top"></span>
+              <span class="book-mark"><img class="book-icon ink-gold" src="assets/img/ejoshi-icon-cream.svg" alt=""></span>
+              <span class="book-title">Weekly AI Check-In</span>
+              <span class="book-cap bot"></span>
+            </a>
+          </div>
+          <p style="text-align:center; font-family:var(--serif); font-style:italic; font-weight:300; font-size:13px; color:var(--text-muted); margin: 28px 0 0;">Every book carries its own color — chosen to match what's inside.</p>
+          <div class="bookshelf-titles">
+            <div class="bookshelf-titles-item"><strong>Ejoshi AI Starter Kit</strong><em>The foundation. If you only read one, read this.</em></div>
+            <div class="bookshelf-titles-item"><strong>Prompt Like a Pro</strong><em>Get better answers from any AI tool, every time.</em></div>
+            <div class="bookshelf-titles-item"><strong>Better Questions</strong><em>The skill that beats every prompt template.</em></div>
+            <div class="bookshelf-titles-item"><strong>Family AI Guide</strong><em>Bring AI into the home with confidence, not anxiety.</em></div>
+            <div class="bookshelf-titles-item"><strong>Discussion Guide — AI in the Classroom</strong><em>Lead the AI conversation with your class, calmly.</em></div>
+            <div class="bookshelf-titles-item"><strong>A First AI Lesson</strong><em>Day-one structure for introducing AI to new learners.</em></div>
+            <div class="bookshelf-titles-item"><strong>The One-Person AI Workflow</strong><em>Run your work like you have a team behind you.</em></div>
+            <div class="bookshelf-titles-item"><strong>How to Read About AI</strong><em>Tell hype from signal in any AI article you see.</em></div>
+            <div class="bookshelf-titles-item"><strong>Weekly AI Check-In</strong><em>Five minutes a week to stay sharp without burnout.</em></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ============================================================
+       CTA — Join the list, with 3D bottom moment
+       ============================================================ -->
+  <section id="join" class="bottom-stage">
+    <!-- Floating amber embers from the library candles -->
+    <div class="embers" aria-hidden="true">
+      <span class="ember"></span><span class="ember"></span><span class="ember"></span>
+      <span class="ember"></span><span class="ember"></span><span class="ember"></span>
+      <span class="ember"></span><span class="ember"></span><span class="ember"></span>
+      <span class="ember"></span><span class="ember"></span><span class="ember"></span>
+      <span class="ember"></span><span class="ember"></span>
+    </div>
+
+    <div class="container">
+      <div class="cta-block reveal">
+        <div class="cta-card">
+          <span class="section-eyebrow">// Stay close</span>
+          <h2>Sit down. <em>Stay a while.</em></h2>
+          <p>One short note each week. Three useful AI things. No noise. Unsubscribe anytime.</p>
+          <form class="email-form" action="https://ejoshi.beehiiv.com/create" method="post" target="_blank">
+            <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit" class="btn btn-candle">Join free →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <!-- ============================================================
      FOOTER
      ============================================================ -->
-</main>
-
-<footer class="footer" role="contentinfo">
+<footer>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="assets/img/ejoshi-lockup.png" alt="Ejoshi">
-        <p><em>Made for the Ones Who Move Different.</em></p>
-        <p class="mt-3">An AI education and lifestyle brand. Built for families, learners, educators, and builders.</p>
-      </div>
+    <div class="footer-brand">
+      <img src="assets/img/ejoshi-icon-cream.svg" alt="Ejoshi">
       <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="videos.html">Videos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Pathways</h4>
-        <ul>
-          <li><a href="learners-young.html">Young Learners</a></li>
-          <li><a href="learners-everyday.html">Everyday Learners</a></li>
-          <li><a href="families.html">Parents &amp; Families</a></li>
-          <li><a href="educators.html">Educators</a></li>
-          <li><a href="builders.html">Builders &amp; Business Owners</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Where Else</h4>
-        <ul>
-          <li><a href="https://www.youtube.com/@EjoshiTV" target="_blank" rel="noopener">YouTube · @EjoshiTV</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="contact.html">nick@ejoshi.info</a></li>
-        </ul>
+        <div class="footer-name">Ejoshi</div>
+        <div class="footer-tagline">Made for the Ones Who Move Different.</div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Ejoshi · Pronounced "Eh-JOH-shee"</span>
-      <span class="built-with">Built with Claude</span>
+    <div style="text-align:right">
+      <ul class="footer-links" style="justify-content:flex-end; margin-bottom:16px">
+        <li><a href="about.html">About</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-meta">意乔施 · 2026</div>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/ejoshi.js?v=20260527" defer></script>
+<!-- ============================================================
+     JS — Scroll reveal + audience tile glow tracking
+     ============================================================ -->
+<script>
+(() => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+  if (!prefersReduced && !isMobile) {
+    document.querySelectorAll('[data-tilt]').forEach(tile => {
+      tile.addEventListener('mousemove', (e) => {
+        const rect = tile.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        tile.style.setProperty('--mx', `${x}%`);
+        tile.style.setProperty('--my', `${y}%`);
+      });
+    });
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !prefersReduced) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.addEventListener('error', () => { heroVideo.style.display = 'none'; });
+  }
+})();
+</script>
+
 </body>
 </html>

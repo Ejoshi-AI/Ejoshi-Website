@@ -962,7 +962,7 @@
 </style>
 
 <style>.nav-brand img{width:48px!important;height:48px!important}footer .footer-brand img{width:56px!important}</style>
-</head>
+<style>@media (max-width:900px){.nav.is-open .nav-links{display:flex;flex-direction:column;gap:16px;position:absolute;top:100%;left:0;right:0;margin:0;list-style:none;background:rgba(15,10,5,0.97);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);padding:20px 32px;border-bottom:1px solid rgba(190,150,70,0.18);box-shadow:0 20px 40px rgba(0,0,0,0.5);}.nav.is-open .nav-links a{font-size:16px;}}</style></head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <nav class="nav" aria-label="Primary">
@@ -1052,4 +1052,4 @@
   } else { reveals.forEach(el=>el.classList.add('is-visible')); }
 })();
 </script>
-<script src="assets/js/ejoshi-helper.js" defer></script></body></html>
+<script src="assets/js/ejoshi-helper.js" defer></script><script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav");if(t&&n){t.addEventListener("click",function(){var o=n.classList.toggle("is-open");t.setAttribute("aria-expanded",o);});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("is-open");});});}})();</script></body></html>

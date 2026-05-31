@@ -1327,7 +1327,7 @@
     <img src="https://ejoshi.ai/assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true"><span>Ask Ejoshi</span>
   </button>
   <div class="ae-panel" role="dialog" aria-label="Ask Ejoshi" hidden>
-    <div class="ae-head"><img src="https://ejoshi.ai/assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true"><div><strong>Ask Ejoshi</strong><span>Questions about AI or Ejoshi? Ask away.</span></div><button class="ae-close" aria-label="Close">&times;</button></div>
+    <div class="ae-head"><img src="https://ejoshi.ai/assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true"><div><strong>Ask Ejoshi</strong><span>Questions about AI or Ejoshi? Ask away.</span></div><button class="ae-clear" aria-label="Clear chat" title="Clear chat">&#8635;</button><button class="ae-close" aria-label="Close">&times;</button></div>
     <div class="ae-log" aria-live="polite"></div>
     <form class="ae-form"><input class="ae-input" type="text" autocomplete="off" placeholder="Ask a question&hellip;" aria-label="Your question"><button class="ae-send" aria-label="Send">&rarr;</button></form>
     <div class="ae-foot">Built with Claude &middot; be kind, it's new</div>
@@ -1344,7 +1344,8 @@
   .ae-head img{width:30px;height:30px;}
   .ae-head strong{color:var(--ae-cream);font-family:'Fraunces',serif;font-size:15px;display:block;}
   .ae-head span{color:var(--ae-dim);font-size:12px;}
-  .ae-close{margin-left:auto;background:none;border:0;color:var(--ae-dim);font-size:22px;cursor:pointer;line-height:1;}
+  .ae-clear{margin-left:auto;background:none;border:0;color:var(--ae-dim);font-size:16px;cursor:pointer;line-height:1;}
+  .ae-close{background:none;border:0;color:var(--ae-dim);font-size:22px;cursor:pointer;line-height:1;}
   .ae-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
   .ae-msg{max-width:85%;padding:9px 13px;border-radius:13px;font-size:14px;line-height:1.5;}
   .ae-msg.bot{align-self:flex-start;background:#2a2014;color:var(--ae-cream);border:1px solid rgba(190,150,70,.18);}
@@ -1361,29 +1362,38 @@
 (function(){
   var root=document.getElementById('ask-ejoshi');if(!root)return;
   var WORKER_URL=(root.getAttribute('data-worker-url')||'').trim();
+  var KEY='ejoshi_chat_v1';
   var fab=root.querySelector('.ae-fab'),panel=root.querySelector('.ae-panel'),log=root.querySelector('.ae-log'),
-      form=root.querySelector('.ae-form'),input=root.querySelector('.ae-input'),closeBtn=root.querySelector('.ae-close');
+      form=root.querySelector('.ae-form'),input=root.querySelector('.ae-input'),
+      closeBtn=root.querySelector('.ae-close'),clearBtn=root.querySelector('.ae-clear');
   var history=[],opened=false,busy=false;
+  function load(){try{var s=localStorage.getItem(KEY);if(s){history=JSON.parse(s)||[];}}catch(e){history=[];}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(history.slice(-20)));}catch(e){}}
   function add(text,cls){var d=document.createElement('div');d.className='ae-msg '+cls;d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+  function greet(){
+    if(!WORKER_URL){add("Hi - I'm the Ejoshi owl. I'm just about ready to chat. In the meantime, the free guides are on the Resources page, and you can try AI yourself in Claude.","bot");}
+    else{add("Hi - I'm the Ejoshi owl. Ask me anything about Ejoshi or getting started with AI.","bot");}
+  }
+  function render(){log.innerHTML='';for(var i=0;i<history.length;i++){add(history[i].content,history[i].role==='assistant'?'bot':'me');}}
   function open(){panel.hidden=false;fab.setAttribute('aria-expanded','true');input.focus();
-    if(!opened){opened=true;
-      if(!WORKER_URL){add("Hi - I'm the Ejoshi owl. I'm just about ready to chat. In the meantime, the free guides are on the Resources page, and you can try AI yourself in Claude.","bot");}
-      else{add("Hi - I'm the Ejoshi owl. Ask me anything about Ejoshi or getting started with AI.","bot");}
-    }}
+    if(!opened){opened=true;if(history.length){render();}else{greet();}}}
   function close(){panel.hidden=true;fab.setAttribute('aria-expanded','false');}
+  function clear(){history=[];save();log.innerHTML='';greet();input.focus();}
   fab.addEventListener('click',function(){panel.hidden?open():close();});
   closeBtn.addEventListener('click',close);
+  if(clearBtn){clearBtn.addEventListener('click',clear);}
   form.addEventListener('submit',function(e){
     e.preventDefault();var q=input.value.trim();if(!q||busy)return;
-    add(q,'me');history.push({role:'user',content:q});input.value='';
+    add(q,'me');history.push({role:'user',content:q});save();input.value='';
     if(!WORKER_URL){add("Chat isn't switched on yet - but the Resources page has the free guides, and you can open Claude (claude.com/download) to try AI right now.","note");return;}
     busy=true;var thinking=add("...",'bot');
     fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})})
       .then(function(r){return r.json();})
-      .then(function(d){thinking.remove();var reply=(d&&d.reply)?d.reply:"Sorry, something went wrong. Try again in a moment?";add(reply,'bot');history.push({role:'assistant',content:reply});})
-      .catch(function(){thinking.remove();add("Sorry, I couldn't reach the server. Please try again.","bot");})
+      .then(function(d){thinking.remove();var reply=(d&&d.reply)?d.reply:"Sorry - something went wrong. Try again in a moment?";add(reply,'bot');history.push({role:'assistant',content:reply});save();})
+      .catch(function(){thinking.remove();add("Sorry - I couldn't reach the server. Please try again.","bot");})
       .finally(function(){busy=false;});
   });
+  load();
 })();
 </script>
 </body>

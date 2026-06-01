@@ -1,0 +1,1057 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About Ejoshi — calm, practical, free AI learning</title><meta name="description" content="The story behind Ejoshi: AI literacy built in public, free to access, made for everyday humans."><meta name="theme-color" content="#0F0A05">
+<link rel="icon" type="image/svg+xml" href="../assets/img/ejoshi-icon-bronze.svg"><link rel="canonical" href="https://ejoshi.ai/en/about.html">
+<meta property="og:title" content="About Ejoshi — calm, practical, free AI learning"><meta property="og:description" content="The story behind Ejoshi: AI literacy built in public, free to access, made for everyday humans."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    /* ============================================================
+       v9 prototype — Warm Scholarly · Owl Library aesthetic
+       Locked tagline: "AI, made for everyday humans."
+       ============================================================ */
+
+    :root {
+      /* warmer-shifted palette */
+      --bg: #0F0A05;
+      --bg-deep: #08050A;
+      --surface: #1A130A;
+      --surface-lift: #261C10;
+      --candle-amber: #E2A847;
+      --bronze: #BE9646;
+      --bronze-warm: #C99B4F;
+      --bronze-deep: #8C6B2E;
+      --cream: #F0E0BC;
+      --cream-warm: #E6D7B4;
+      --cream-dim: #B8AA8A;
+      --paper: #D9C9A7;
+      --text: var(--cream-warm);
+      --text-dim: rgba(230, 215, 180, 0.68);
+      --text-muted: rgba(230, 215, 180, 0.4);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --max-width: 1200px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 100;
+      background: var(--candle-amber); color: var(--bg);
+      padding: 12px 20px; text-decoration: none; font-weight: 500;
+    }
+    .skip-link:focus { left: 16px; top: 16px; }
+
+    /* ============================================================
+       NAV — warm-glass blur
+       ============================================================ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(15, 10, 5, 0.6);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      border-bottom: 1px solid rgba(190, 150, 70, 0.15);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--cream); text-decoration: none; }
+    .nav-brand img {
+      width: 38px; height: 38px;
+      filter: drop-shadow(0 4px 18px rgba(226, 168, 71, 0.35));
+    }
+    .nav-brand-text {
+      font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 15px;
+      font-weight: 400; transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover, .nav-links a.is-active { color: var(--cream); }
+    .nav-links a.is-active::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; right: 0;
+      height: 1px; background: var(--candle-amber);
+      box-shadow: 0 0 10px rgba(226, 168, 71, 0.7);
+    }
+    .nav-cta { display: flex; align-items: center; gap: 18px; }
+    .lang-toggle {
+      background: transparent; border: 1px solid rgba(230, 215, 180, 0.22);
+      color: var(--cream-dim); padding: 8px 14px; border-radius: 999px;
+      font-family: var(--sans); font-size: 13px; cursor: pointer; transition: all 0.2s;
+    }
+    .lang-toggle:hover { border-color: var(--candle-amber); color: var(--candle-amber); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 24px; border-radius: 999px;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.35s var(--ease);
+      position: relative;
+    }
+    .btn-candle {
+      background: linear-gradient(135deg, var(--candle-amber), var(--bronze));
+      color: #2A1B08;
+      box-shadow: 0 10px 28px rgba(226, 168, 71, 0.28),
+                  0 0 40px rgba(226, 168, 71, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .btn-candle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(226, 168, 71, 0.5),
+                  0 0 60px rgba(226, 168, 71, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .btn-ghost {
+      background: rgba(15, 10, 5, 0.4); color: var(--cream);
+      border: 1px solid rgba(230, 215, 180, 0.25);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { border-color: var(--candle-amber); color: var(--candle-amber); }
+
+    .nav-toggle { display: none; background: transparent; border: 0; color: var(--cream); font-size: 24px; cursor: pointer; }
+
+    /* ============================================================
+       HERO — Video library scene with text overlay
+       ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh; min-height: 100svh;
+      overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      z-index: 0;
+    }
+    .hero-video-fallback {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      background-image: url('assets/video/ejoshi-ai-learning-library-hero-poster.jpg');
+      background-size: cover; background-position: center;
+      z-index: 0;
+    }
+    /* Warm scrim gradient for text legibility */
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse at 25% 50%, rgba(15, 10, 5, 0.75), transparent 55%),
+        linear-gradient(180deg, rgba(15, 10, 5, 0.55) 0%, rgba(15, 10, 5, 0.15) 35%, rgba(15, 10, 5, 0.45) 100%);
+    }
+    /* Vignette */
+    .hero-vignette {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(8, 5, 10, 0.7) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 140px 32px 80px;
+      width: 100%;
+    }
+    .hero-copy { max-width: 600px; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--mono); font-size: 12px;
+      color: var(--candle-amber); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 28px;
+      padding: 7px 14px; border: 1px solid rgba(226, 168, 71, 0.35);
+      border-radius: 6px; background: rgba(15, 10, 5, 0.55);
+      backdrop-filter: blur(8px);
+    }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(44px, 6vw, 84px); line-height: 1.02;
+      letter-spacing: -0.02em; color: var(--cream);
+      margin-bottom: 30px;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+    }
+    .hero h1 .accent {
+      color: var(--candle-amber);
+      font-style: italic; font-weight: 300;
+    }
+    .hero p {
+      font-family: var(--serif); font-weight: 300; font-style: italic;
+      font-size: 21px; line-height: 1.5; color: var(--cream-warm);
+      margin-bottom: 40px; max-width: 520px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%); z-index: 2;
+      font-family: var(--mono); font-size: 11px;
+      color: var(--cream-dim); letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .scroll-cue::after {
+      content: ''; width: 1px; height: 32px;
+      background: linear-gradient(to bottom, var(--candle-amber), transparent);
+      animation: scrollDown 2.5s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0% { transform: translateY(-10px); opacity: 0; }
+      30%, 70% { opacity: 1; }
+      100% { transform: translateY(10px); opacity: 0; }
+    }
+
+    /* ============================================================
+       SECTION SCAFFOLD
+       ============================================================ */
+    section { padding: 110px 0; position: relative; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow {
+      font-family: var(--mono); font-size: 12px;
+      color: var(--candle-amber); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(34px, 4.2vw, 52px); line-height: 1.1;
+      color: var(--cream); margin-bottom: 18px;
+      max-width: 760px;
+      letter-spacing: -0.015em;
+    }
+    .section-title em {
+      color: var(--candle-amber); font-weight: 300; font-style: italic;
+    }
+    .section-intro {
+      font-family: var(--serif); font-weight: 300; font-style: italic;
+      font-size: 19px; color: var(--text-dim);
+      max-width: 640px; margin-bottom: 60px; line-height: 1.55;
+    }
+
+    /* Bookshelf divider — subtle horizontal mark of vertical lines */
+    .bookshelf-divider {
+      position: relative; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(190, 150, 70, 0.3), transparent);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .bookshelf-divider::before,
+    .bookshelf-divider::after {
+      content: '';
+      position: absolute; top: -3px; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--candle-amber);
+      box-shadow: 0 0 14px rgba(226, 168, 71, 0.7);
+    }
+    .bookshelf-divider::before { left: 50%; transform: translateX(-50%); }
+
+    /* ============================================================
+       INTRO BLOCK — section after hero, warm welcome
+       ============================================================ */
+    .intro-block {
+      padding: 130px 0 100px;
+      background: radial-gradient(ellipse at top, rgba(226, 168, 71, 0.05), transparent 60%);
+    }
+    .intro-grid {
+      display: grid; gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+    .intro-owl {
+      position: relative;
+      display: flex; justify-content: center;
+    }
+    .intro-owl img {
+      max-width: 360px; width: 100%;
+      filter: drop-shadow(0 24px 56px rgba(0, 0, 0, 0.7))
+              drop-shadow(0 0 80px rgba(226, 168, 71, 0.25));
+      animation: gentleFloat 6s ease-in-out infinite;
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ============================================================
+       AUDIENCE — 7 entry points
+       ============================================================ */
+    .audience-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .audience-tile {
+      position: relative;
+      padding: 30px 26px;
+      background: linear-gradient(180deg, rgba(38, 28, 16, 0.7), rgba(26, 19, 10, 0.5));
+      border: 1px solid rgba(190, 150, 70, 0.12);
+      border-radius: var(--radius);
+      text-decoration: none; color: inherit;
+      transition: all 0.35s var(--ease);
+      display: flex; flex-direction: column; justify-content: space-between;
+      min-height: 170px;
+      overflow: hidden;
+    }
+    .audience-tile::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(226, 168, 71, 0.12), transparent 60%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .audience-tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(226, 168, 71, 0.45);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5),
+                  0 0 60px rgba(226, 168, 71, 0.06);
+    }
+    .audience-tile:hover::before { opacity: 1; }
+    .audience-tile h4 {
+      font-family: var(--serif); font-weight: 500; font-size: 19px;
+      color: var(--cream); margin-bottom: 10px; position: relative;
+    }
+    .audience-tile p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.55; position: relative;
+    }
+    .audience-tile-arrow {
+      align-self: flex-end; color: var(--candle-amber);
+      font-family: var(--serif); font-size: 22px;
+      transition: transform 0.3s var(--ease); position: relative;
+    }
+    .audience-tile:hover .audience-tile-arrow { transform: translateX(6px); }
+    .audience-tile.is-soon { opacity: 0.7; }
+    .audience-tile.is-soon h4 em {
+      font-size: 11px; font-style: normal;
+      font-family: var(--mono); color: var(--candle-amber);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-left: 10px; vertical-align: middle;
+    }
+
+    /* ============================================================
+       RESOURCES — library shelf treatment
+       ============================================================ */
+    .resources-section {
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(26, 19, 10, 0.5) 50%, transparent 100%);
+    }
+    .resources-block {
+      background:
+        linear-gradient(180deg, rgba(38, 28, 16, 0.7), rgba(26, 19, 10, 0.5));
+      border: 1px solid rgba(190, 150, 70, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 64px 52px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    }
+    .resources-block::before {
+      content: ''; position: absolute;
+      top: -40%; right: -10%; width: 60%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(226, 168, 71, 0.18), transparent 60%);
+      filter: blur(60px); pointer-events: none;
+    }
+    .resources-block > * { position: relative; z-index: 1; }
+    .resources-header {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end;
+      gap: 28px; margin-bottom: 50px;
+    }
+    /* ============================================================
+       v9.1 BOOK SPINES variant — actual books on a shelf
+       ============================================================ */
+    .bookshelf {
+      position: relative;
+      padding: 50px 0 0;
+      perspective: 1600px;
+    }
+    .bookshelf-row {
+      display: flex; align-items: flex-end; justify-content: center;
+      gap: 2px; flex-wrap: wrap;
+      padding: 0 8px 18px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .bookshelf-row::after {
+      content: ''; position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 16px;
+      background: linear-gradient(180deg, rgba(60, 40, 20, 0.9) 0%, rgba(40, 26, 12, 0.95) 60%, rgba(20, 12, 6, 1) 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(226, 168, 71, 0.18);
+      border-radius: 2px;
+    }
+    .bookshelf-row::before {
+      content: ''; position: absolute;
+      left: 10%; right: 10%; bottom: 18px; height: 30px; pointer-events: none;
+      background: radial-gradient(ellipse at center top, rgba(226, 168, 71, 0.18), transparent 70%);
+      filter: blur(10px);
+    }
+    /* ============================================================
+       v9.2 BOOK SPINES — bound-book look · headbands · raised bands
+       ============================================================ */
+    .book {
+      position: relative; flex: 0 0 auto;
+      border-radius: 1px 3px 3px 1px;
+      text-decoration: none;
+      transition: transform 0.35s var(--ease), filter 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      transform-origin: bottom center; cursor: pointer;
+      display: flex; flex-direction: column; align-items: stretch;
+      padding: 0; overflow: hidden;
+      box-shadow:
+        inset -2px 0 4px rgba(0, 0, 0, 0.45),
+        inset 2px 0 3px rgba(255, 255, 255, 0.06),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+    /* Width variations — real shelves are never uniform */
+    .book.bk-w1 { width: 62px; }
+    .book.bk-w2 { width: 62px; }
+    .book.bk-w3 { width: 62px; }
+    .book.bk-w4 { width: 62px; }
+    /* Subtle cloth/linen weave + side-edge shading */
+    .book::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.07) 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px);
+      opacity: 0.7; pointer-events: none; z-index: 1;
+    }
+    .book::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.10) 0%, transparent 10%, transparent 86%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    /* Headband + tail cap — fabric strip at top and bottom of spine */
+    .book-cap {
+      position: relative; width: 100%; height: 7px;
+      flex-shrink: 0; z-index: 3;
+      border-top: 1px solid rgba(0,0,0,0.5);
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+    }
+    .book-cap.top {
+      background: linear-gradient(180deg, var(--cap-color, #C8924A) 0%, rgba(120,76,28,0.85) 65%, rgba(38,22,8,0.95) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,210,140,0.35);
+    }
+    .book-cap.bot {
+      background: linear-gradient(0deg, var(--cap-color, #C8924A) 0%, rgba(120,76,28,0.85) 65%, rgba(38,22,8,0.95) 100%);
+      box-shadow: inset 0 -1px 0 rgba(255,210,140,0.35);
+    }
+    /* Vertical title panel — fills the spine below the seal */
+    .book-title {
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      font-family: var(--serif); font-weight: 500;
+      font-size: 12px; line-height: 1.15;
+      color: var(--ink-color, #E6C68A);
+      letter-spacing: 0.05em; text-align: center;
+      flex: 1; padding: 12px 0 18px; align-self: center;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.7), 0 0 4px rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    /* Big Ejoshi seal — character-forward mark at top of each spine */
+    .book-mark {
+      position: relative; width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 237, 200, 0.12);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 237, 200, 0.28),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.5);
+      display: flex; align-items: center; justify-content: center;
+      margin: 14px 0 6px;
+      align-self: center;
+      flex-shrink: 0; z-index: 3;
+      transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .book-mark .book-icon {
+      width: 28px; height: 28px; opacity: 0.92;
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), filter 0.3s var(--ease);
+    }
+    .book-icon.ink-gold {
+      filter: brightness(0) saturate(100%) invert(86%) sepia(38%) saturate(420%) hue-rotate(348deg) brightness(108%) contrast(96%);
+    }
+    .book-icon.ink-cream {
+      filter: brightness(0) saturate(100%) invert(96%) sepia(13%) saturate(280%) hue-rotate(347deg) brightness(108%) contrast(94%);
+    }
+    .book:hover .book-mark {
+      background: rgba(255, 237, 200, 0.22);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 237, 200, 0.42),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 237, 200, 0.32);
+    }
+    .book:hover .book-mark .book-icon { opacity: 1; transform: scale(1.1); }
+    .book:hover .book-title { color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.7), 0 0 10px rgba(255,220,150,0.4); }
+
+    /* Hover lift */
+    .book:hover {
+      transform: translateY(-22px) rotate(-3deg);
+      filter: brightness(1.15);
+      box-shadow:
+        inset -2px 0 4px rgba(0, 0, 0, 0.4),
+        inset 2px 0 3px rgba(255, 255, 255, 0.08),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 24px 36px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(226, 168, 71, 0.22);
+      z-index: 5;
+    }
+
+    /* Heights — staggered for organic shelf (supporting books, shorter band) */
+    .book.h1 { height: 300px; }
+    .book.h2 { height: 300px; }
+    .book.h3 { height: 300px; }
+    .book.h4 { height: 300px; }
+    .book.h5 { height: 300px; }
+    .book.h6 { height: 300px; }
+    .book.h7 { height: 300px; }
+    .book.h8 { height: 300px; }
+
+    /* Supporting books — smaller seal so the flagship leads the eye */
+    .book:not(.bk-hero) .book-mark { width: 34px; height: 34px; margin: 11px 0 5px; }
+    .book:not(.bk-hero) .book-mark .book-icon { width: 22px; height: 22px; }
+
+    /* Flagship — brighter cap + warm glow halo (no width change) */
+    .book.cat-start {
+      box-shadow:
+        inset -2px 0 4px rgba(0, 0, 0, 0.4),
+        inset 2px 0 3px rgba(255, 255, 255, 0.18),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 14px 28px rgba(0, 0, 0, 0.6),
+        0 0 32px rgba(226, 168, 71, 0.32);
+    }
+    .book.cat-start .book-title { color: #FFEDC8; font-weight: 600; font-size: 13px; }
+    .book.cat-start .book-cap { --cap-color: #E6C68A; }
+    .book.cat-start .book-mark {
+      background: rgba(255, 237, 200, 0.26);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 237, 200, 0.5),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 0 22px rgba(226, 168, 71, 0.55);
+    }
+    .book.cat-start .book-mark .book-icon { opacity: 1; }
+
+    /* Flagship hero — one big book that anchors the shelf (paired with cat-start glow) */
+    .book.bk-hero { width: 112px; height: 392px; border-radius: 1px 4px 4px 1px; }
+    .book.bk-hero .book-mark { width: 60px; height: 60px; margin: 20px 0 10px; }
+    .book.bk-hero .book-mark .book-icon { width: 40px; height: 40px; }
+    .book.bk-hero .book-title { font-size: 15px; padding: 14px 0 22px; }
+    .book.bk-hero .book-cap { height: 9px; }
+
+    /* Per-book story colors */
+    .book.bk-hearth     { background: linear-gradient(90deg, #3A1F08 0%, #D88A30 50%, #3A1F08 100%); }    /* warm fire to gather around */
+    .book.bk-ink        { background: linear-gradient(90deg, #0A1224 0%, #2D4570 50%, #0A1224 100%); }   /* ink blue · writing & craft */
+    .book.bk-forest     { background: linear-gradient(90deg, #0A1810 0%, #3A6045 50%, #0A1810 100%); }   /* forest · thoughtful, growing */
+    .book.bk-terracotta { background: linear-gradient(90deg, #2A1208 0%, #B86838 50%, #2A1208 100%); }   /* terracotta · home, hearth */
+    .book.bk-bordeaux   { background: linear-gradient(90deg, #1F0A0A 0%, #6E2A2A 50%, #1F0A0A 100%); }   /* bordeaux · academic, classical */
+    .book.bk-chalk      { background: linear-gradient(90deg, #1A2028 0%, #5A6B7A 50%, #1A2028 100%); }   /* chalk blue · classroom */
+    .book.bk-sienna     { background: linear-gradient(90deg, #260D05 0%, #A05028 50%, #260D05 100%); }   /* burnt sienna · workshop, craft */
+    .book.bk-slate      { background: linear-gradient(90deg, #1A1D24 0%, #4A4F58 50%, #1A1D24 100%); }   /* slate · calm reading */
+    .book.bk-moss       { background: linear-gradient(90deg, #102015 0%, #5A7050 50%, #102015 100%); }   /* moss · steady habit */
+    .bookshelf-caption {
+      margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 10.5px;
+      color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .legend-swatch {
+      width: 14px; height: 14px; border-radius: 2px;
+      box-shadow: inset -1px 0 2px rgba(0,0,0,0.4);
+    }
+    .legend-swatch.cat-start { background: linear-gradient(180deg, #D88A30, #8B4810); }
+    .legend-swatch.cat-foundational { background: linear-gradient(180deg, #BFA66E, #8B7740); }
+    .legend-swatch.cat-family { background: linear-gradient(180deg, #8B2A2A, #4A0E0E); }
+    .legend-swatch.cat-educator { background: linear-gradient(180deg, #2E3D78, #14193A); }
+    .legend-swatch.cat-builder { background: linear-gradient(180deg, #7A4F22, #3F260A); }
+    .legend-swatch.cat-everyday { background: linear-gradient(180deg, #8C816A, #5A5040); }
+    .bookshelf-titles {
+      margin-top: 30px; display: grid; gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); font-size: 13px;
+    }
+    .bookshelf-titles-item {
+      padding: 12px 14px;
+      background: rgba(8, 5, 10, 0.45);
+      border: 1px solid rgba(230, 215, 180, 0.08);
+      border-radius: 8px; color: var(--cream);
+    }
+    .bookshelf-titles-item strong {
+      font-family: var(--serif); font-weight: 500; display: block; margin-bottom: 2px;
+    }
+    .bookshelf-titles-item em {
+      font-style: italic; font-weight: 300; color: var(--text-dim); font-size: 12.5px;
+    }
+    @media (max-width: 720px) {
+      .bookshelf-row {
+        flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+        scroll-snap-type: x mandatory; padding-bottom: 26px;
+      }
+      .book { scroll-snap-align: start; }
+    }
+
+    /* ============================================================
+       BOTTOM 3D SECTION — embers + perspective CTA + bookshelf horizon
+       ============================================================ */
+    .bottom-stage {
+      position: relative;
+      perspective: 1400px;
+      overflow: hidden;
+      padding: 40px 0 0;
+    }
+
+    /* Bookshelf depth backdrop — silhouetted vertical bands fading into shadow */
+    .bottom-stage::before {
+      content: ''; position: absolute;
+      inset: 0; z-index: 0;
+      background:
+        repeating-linear-gradient(90deg,
+          transparent 0,
+          transparent 80px,
+          rgba(38, 28, 16, 0.45) 80px,
+          rgba(38, 28, 16, 0.45) 84px,
+          transparent 84px,
+          transparent 160px,
+          rgba(26, 19, 10, 0.6) 160px,
+          rgba(26, 19, 10, 0.6) 168px
+        ),
+        linear-gradient(180deg, transparent 0%, rgba(8, 5, 10, 0.7) 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.85) 100%);
+      pointer-events: none;
+      transform: translateZ(-200px) scale(1.15);
+    }
+
+    /* Warm horizon glow at the very bottom — candle floor of the library */
+    .bottom-stage::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 320px;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(226, 168, 71, 0.22), transparent 65%),
+        radial-gradient(ellipse at 20% 100%, rgba(190, 100, 30, 0.12), transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(226, 168, 71, 0.12), transparent 50%);
+      pointer-events: none; z-index: 1;
+      filter: blur(20px);
+    }
+
+    /* Floating amber embers — atmospheric particles from the video aesthetic */
+    .embers {
+      position: absolute; inset: 0;
+      pointer-events: none; z-index: 2;
+      overflow: hidden;
+    }
+    .ember {
+      position: absolute; bottom: -10px;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--candle-amber);
+      box-shadow: 0 0 12px var(--candle-amber), 0 0 24px rgba(226, 168, 71, 0.5);
+      opacity: 0;
+      animation-name: emberRise;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    .ember:nth-child(1)  { left: 8%;  width: 3px; height: 3px; animation-duration: 14s; animation-delay: 0s; }
+    .ember:nth-child(2)  { left: 17%; width: 5px; height: 5px; animation-duration: 18s; animation-delay: 2s; }
+    .ember:nth-child(3)  { left: 26%; width: 3px; height: 3px; animation-duration: 16s; animation-delay: 5s; }
+    .ember:nth-child(4)  { left: 35%; width: 4px; height: 4px; animation-duration: 20s; animation-delay: 1s; }
+    .ember:nth-child(5)  { left: 44%; width: 6px; height: 6px; animation-duration: 22s; animation-delay: 3s; opacity: 0.9; }
+    .ember:nth-child(6)  { left: 53%; width: 3px; height: 3px; animation-duration: 15s; animation-delay: 7s; }
+    .ember:nth-child(7)  { left: 62%; width: 4px; height: 4px; animation-duration: 19s; animation-delay: 4s; }
+    .ember:nth-child(8)  { left: 71%; width: 5px; height: 5px; animation-duration: 17s; animation-delay: 6s; }
+    .ember:nth-child(9)  { left: 80%; width: 3px; height: 3px; animation-duration: 21s; animation-delay: 0s; }
+    .ember:nth-child(10) { left: 89%; width: 4px; height: 4px; animation-duration: 16s; animation-delay: 4s; }
+    .ember:nth-child(11) { left: 12%; width: 4px; height: 4px; animation-duration: 23s; animation-delay: 9s; }
+    .ember:nth-child(12) { left: 38%; width: 3px; height: 3px; animation-duration: 20s; animation-delay: 11s; }
+    .ember:nth-child(13) { left: 67%; width: 5px; height: 5px; animation-duration: 17s; animation-delay: 8s; }
+    .ember:nth-child(14) { left: 92%; width: 3px; height: 3px; animation-duration: 19s; animation-delay: 2s; }
+    @keyframes emberRise {
+      0% { transform: translate3d(0, 0, 0) scale(0.7); opacity: 0; }
+      8% { opacity: 0.85; }
+      40% { transform: translate3d(-20px, -45vh, 0) scale(1); }
+      70% { transform: translate3d(15px, -75vh, 0) scale(0.85); opacity: 0.5; }
+      100% { transform: translate3d(-10px, -110vh, 0) scale(0.4); opacity: 0; }
+    }
+
+    /* CTA — Join the list, now with perspective lift */
+    .cta-block {
+      text-align: center; padding: 90px 40px;
+      max-width: 760px; margin: 0 auto;
+      position: relative; z-index: 3;
+      transform-style: preserve-3d;
+      transition: transform 0.6s var(--ease);
+    }
+    .cta-card {
+      position: relative;
+      padding: 70px 48px 60px;
+      background:
+        linear-gradient(180deg,
+          rgba(38, 28, 16, 0.85) 0%,
+          rgba(26, 19, 10, 0.75) 100%);
+      border: 1px solid rgba(226, 168, 71, 0.28);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(20px);
+      box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.65),
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(226, 168, 71, 0.08),
+        inset 0 1px 0 rgba(255, 230, 180, 0.08);
+      transform: translateZ(40px) rotateX(0deg);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      transform-style: preserve-3d;
+    }
+    .cta-card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(226, 168, 71, 0.4), transparent 50%, rgba(226, 168, 71, 0.2));
+      z-index: -1;
+      opacity: 0.5;
+    }
+    .cta-card::after {
+      content: ''; position: absolute;
+      top: 18%; left: -8%; width: 30%; height: 60%;
+      background: radial-gradient(ellipse, rgba(226, 168, 71, 0.18), transparent 70%);
+      filter: blur(40px); pointer-events: none;
+    }
+    .cta-block:hover .cta-card {
+      transform: translateZ(60px) rotateX(2deg);
+      box-shadow:
+        0 50px 120px rgba(0, 0, 0, 0.75),
+        0 30px 70px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(226, 168, 71, 0.15),
+        inset 0 1px 0 rgba(255, 230, 180, 0.12);
+    }
+    .cta-block > * { position: relative; z-index: 1; }
+    .cta-block h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(34px, 4.5vw, 50px); line-height: 1.12;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .cta-block h2 em { color: var(--candle-amber); font-weight: 300; }
+    .cta-block p {
+      font-family: var(--serif); font-style: italic; font-weight: 300;
+      color: var(--text-dim); font-size: 18px; margin-bottom: 36px;
+    }
+    .email-form {
+      display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap;
+    }
+    .email-form input[type="email"] {
+      flex: 1; min-width: 220px;
+      background: rgba(26, 19, 10, 0.85); border: 1px solid rgba(226, 168, 71, 0.25);
+      color: var(--cream); padding: 14px 22px; border-radius: 999px;
+      font-family: var(--sans); font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .email-form input[type="email"]:focus {
+      outline: none; border-color: var(--candle-amber);
+      box-shadow: 0 0 0 4px rgba(226, 168, 71, 0.15);
+    }
+
+    /* ============================================================
+       FOOTER — bookshelf horizon
+       ============================================================ */
+    footer {
+      position: relative;
+      padding: 80px 32px 40px;
+      margin-top: 40px;
+      z-index: 3;
+    }
+    /* Bookshelf top line — subtle horizon */
+    footer::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background:
+        linear-gradient(90deg,
+          transparent 0%,
+          rgba(226, 168, 71, 0.6) 30%,
+          var(--candle-amber) 50%,
+          rgba(226, 168, 71, 0.6) 70%,
+          transparent 100%);
+      box-shadow: 0 0 28px rgba(226, 168, 71, 0.4);
+    }
+    /* Subtle book-stack silhouettes along the bottom */
+    footer::after {
+      content: ''; position: absolute;
+      top: 2px; left: 0; right: 0; height: 18px;
+      background:
+        repeating-linear-gradient(90deg,
+          transparent 0, transparent 24px,
+          rgba(38, 28, 16, 0.7) 24px, rgba(38, 28, 16, 0.7) 27px,
+          transparent 27px, transparent 56px,
+          rgba(26, 19, 10, 0.5) 56px, rgba(26, 19, 10, 0.5) 60px
+        );
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
+      pointer-events: none;
+    }
+    .footer-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; gap: 36px;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand img { width: 42px; }
+    .footer-name { font-family: var(--serif); font-size: 19px; color: var(--cream); }
+    .footer-tagline {
+      font-family: var(--serif); font-style: italic; font-weight: 300;
+      color: var(--text-muted); font-size: 13px; margin-top: 6px;
+    }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--candle-amber); }
+    .footer-meta {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--text-muted); letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+       ============================================================ */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal.delay-1 { transition-delay: 0.1s; }
+    .reveal.delay-2 { transition-delay: 0.2s; }
+    .reveal.delay-3 { transition-delay: 0.3s; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .hero { min-height: 90vh; }
+      .hero-inner { padding: 110px 24px 60px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .intro-owl img { max-width: 280px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-cta .btn { padding: 10px 18px; font-size: 13px; }
+      .scroll-cue { display: none; }
+      section { padding: 70px 0; }
+      .resources-block { padding: 40px 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: clamp(34px, 9vw, 46px); }
+      .hero p { font-size: 17px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; text-align: left; }
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-video { display: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  
+    /* ============================================================
+       v9.1 3D DEPTH PASS — Design Inspector direction (2026-05-29)
+       "Not more spectacle — more material depth." Restrained, on-canon.
+       ============================================================ */
+    /* Hero — library alcove: deepen the edges so the copy sits in a recess */
+    .hero { box-shadow: inset 0 -70px 90px -50px rgba(0,0,0,0.72),
+                        inset 0 70px 90px -55px rgba(0,0,0,0.5); }
+    .hero-inner::before {
+      content: ''; position: absolute; inset: -6% -4% auto -4%; height: 70%;
+      z-index: -1; pointer-events: none; opacity: 0.5;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 116px, rgba(190,150,70,0.05) 116px 118px),
+        linear-gradient(180deg, rgba(226,168,71,0.05), transparent 72%);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent);
+              mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent);
+    }
+
+    /* Intro — embossed book-board panel around the brand-promise copy */
+    .intro-grid > div:not(.intro-owl) {
+      position: relative;
+      background: linear-gradient(180deg, rgba(38,28,16,0.55), rgba(18,12,7,0.5));
+      border: 1px solid rgba(190,150,70,0.16);
+      border-radius: var(--radius-lg);
+      padding: 44px 42px;
+      box-shadow: inset 0 1px 0 rgba(255,230,180,0.10),
+                  inset 0 0 0 1px rgba(0,0,0,0.30),
+                  0 30px 64px rgba(0,0,0,0.45);
+    }
+    .intro-grid > div:not(.intro-owl)::after {
+      content: ''; position: absolute; inset: 7px; border-radius: 16px;
+      border: 1px solid rgba(190,150,70,0.18); pointer-events: none;
+    }
+
+    /* Audience tiles — standing book-plates: bronze spine edge + subtle tilt */
+    .audience-grid { perspective: 1100px; }
+    .audience-tile { border-left: 3px solid rgba(190,150,70,0.38); transform-style: preserve-3d; }
+    .audience-tile:hover { transform: translateY(-4px) rotateX(3deg) rotateY(-2deg); }
+
+    /* CTA — shelf ledge with a raised headband cap beneath the card */
+    .cta-block { position: relative; }
+    .cta-block::after {
+      content: ''; position: absolute; left: 7%; right: 7%; bottom: 2px; height: 16px; z-index: 0;
+      background: linear-gradient(180deg, rgba(60,40,20,0.95) 0%, rgba(40,26,12,0.96) 55%, rgba(20,12,6,1) 100%);
+      border-radius: 2px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.6), inset 0 1px 0 rgba(226,168,71,0.28);
+    }
+
+  
+    /* ===== Animation Director motion layer (2026-05-29) — calm, library-native ===== */
+    /* Book-pull hover: the recommended best motion — spine slides forward off the shelf */
+    .bookshelf-row { perspective: 1700px; }
+    .book:hover, .book:focus-visible {
+      transform: translateY(-6px) translateZ(22px) rotate(-2deg) !important;
+      z-index: 6;
+    }
+    /* CTA shelf-ledge: very slow amber candle-glow breathing */
+    .cta-block::after { animation: ledgeGlow 7s ease-in-out infinite; }
+    @keyframes ledgeGlow {
+      0%, 100% { box-shadow: 0 12px 26px rgba(0,0,0,0.6), inset 0 1px 0 rgba(226,168,71,0.20); }
+      50%      { box-shadow: 0 14px 30px rgba(0,0,0,0.62), inset 0 1px 0 rgba(226,168,71,0.40); }
+    }
+    /* Audience book-plate: gentle lift toward the reader on hover/focus */
+    .audience-tile:focus-visible { transform: translateY(-4px) rotateX(3deg) rotateY(-2deg); outline: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .cta-block::after { animation: none !important; }
+      .book:hover, .book:focus-visible { transform: translateY(-4px) !important; }
+    }
+
+  </style>
+<style>
+  .hero.page-hero { min-height: 64vh; min-height: 64svh; }
+  .hero.page-hero .hero-inner { padding: 150px 32px 70px; }
+  .nav-brand img { width: 48px; height: 48px; }
+  footer .footer-brand img { width: 56px; }
+  .cards { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); perspective:1100px; }
+  .card { padding:30px 28px; background:linear-gradient(180deg,rgba(38,28,16,.6),rgba(26,19,10,.45)); border:1px solid rgba(190,150,70,.14); border-left:3px solid rgba(190,150,70,.4); border-radius:0 var(--radius) var(--radius) 0; transition:transform .35s var(--ease),border-color .35s,box-shadow .35s; transform-style:preserve-3d; }
+  .card:hover{ transform:translateY(-5px) rotateX(3deg) rotateY(-2deg); border-color:rgba(226,168,71,.45); box-shadow:0 22px 46px rgba(0,0,0,.5); }
+  .card h4{ font-family:var(--serif); font-weight:500; font-size:19px; color:var(--cream); margin-bottom:9px; }
+  .card p{ font-size:14px; color:var(--text-dim); line-height:1.6; }
+  .res-cards{ display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+  .res-card{ display:flex; gap:14px; align-items:flex-start; padding:20px; text-decoration:none; background:rgba(8,5,10,.4); border:1px solid rgba(230,215,180,.1); border-radius:12px; transition:all .3s var(--ease); }
+  .res-card:hover{ border-color:rgba(226,168,71,.45); transform:translateY(-3px); }
+  .res-card img{ width:30px; height:30px; flex-shrink:0; margin-top:2px; }
+  .res-card strong{ font-family:var(--serif); font-weight:500; color:var(--cream); display:block; font-size:15px; }
+  .res-card span{ font-size:13px; color:var(--text-muted); line-height:1.5; }
+  .faq-item{ border-bottom:1px solid rgba(190,150,70,.14); padding:22px 0; }
+  .faq-item h4{ font-family:var(--serif); font-weight:500; font-size:18px; color:var(--cream); margin-bottom:8px; }
+  .faq-item p{ font-size:15px; color:var(--text-dim); line-height:1.65; }
+  .mail-big{ font-family:var(--serif); font-size:clamp(28px,4vw,44px); color:var(--candle-amber); text-decoration:none; }
+  .mail-big:hover{ text-decoration:underline; }
+</style>
+<style>@media (max-width:900px){.nav.is-open .nav-links{display:flex;flex-direction:column;gap:16px;position:absolute;top:100%;left:0;right:0;margin:0;list-style:none;background:rgba(15,10,5,0.97);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);padding:20px 32px;border-bottom:1px solid rgba(190,150,70,0.18);box-shadow:0 20px 40px rgba(0,0,0,0.5);}.nav.is-open .nav-links a{font-size:16px;}}</style><style id="ej-fx">.btn-candle{position:relative;overflow:hidden;}.btn-candle::after{content:"";position:absolute;top:0;left:-150%;width:55%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,246,224,0.5),transparent);transform:skewX(-18deg);pointer-events:none;}.btn-candle:hover::after{animation:ejShine .85s ease;}@keyframes ejShine{from{left:-150%}to{left:160%}}.cta-card{animation:ejGlow 5.5s ease-in-out infinite;}@keyframes ejGlow{0%,100%{box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 70px rgba(226,168,71,.07),inset 0 1px 0 rgba(255,230,180,.08)}50%{box-shadow:0 44px 110px rgba(0,0,0,.7),0 0 130px rgba(226,168,71,.22),inset 0 1px 0 rgba(255,230,180,.12)}}.bottom-stage{overflow-x:hidden;}.cta-card iframe,#join iframe,.cta-card [class*="beehiiv"],#join [class*="beehiiv"]{width:100%!important;max-width:100%!important;min-width:0!important;}#join .cta-card{overflow:visible;}@media (prefers-reduced-motion:reduce){.btn-candle:hover::after{animation:none}.cta-card{animation:none}}</style>  <link rel="alternate" hreflang="en" href="https://ejoshi.ai/en/about.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://ejoshi.ai/cn/about.html">
+  <link rel="alternate" hreflang="ko" href="https://ejoshi.ai/ko/about.html">
+  <link rel="alternate" hreflang="x-default" href="https://ejoshi.ai/en/about.html">
+</head><body><a class="skip-link" href="#main-content">Skip</a>
+<nav class="nav" aria-label="Primary"><div class="nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Ejoshi"><img src="../assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true"><span class="nav-brand-text">Ejoshi</span></a>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html" class="is-active">About</a></li><li><a href="resources.html">Resources</a></li><li><a href="videos.html">The Series</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="nav-cta"><a class="lang-toggle is-active" href="about.html" hreflang="en" aria-current="true">EN</a>
+      <a class="lang-toggle" href="../cn/about.html" hreflang="zh-CN">中文</a>
+      <a class="lang-toggle" href="../ko/about.html" hreflang="ko">한국어</a><a class="btn btn-candle" href="#join">Join</a></div>
+    <button class="nav-toggle" aria-label="menu" aria-expanded="false">☰</button>
+    </div></nav>
+<main id="main-content">
+<section class="hero page-hero"><div class="hero-video-fallback" aria-hidden="true"></div><video class="hero-video" autoplay muted loop playsinline poster="assets/video/ejoshi-ai-learning-library-hero-poster.jpg" aria-hidden="true"><source src="../assets/video/ejoshi-ai-learning-library-hero.mp4" type="video/mp4"></video><div class="hero-scrim" aria-hidden="true"></div><div class="hero-vignette" aria-hidden="true"></div>
+    <div class="hero-inner"><div class="hero-copy"><span class="hero-eyebrow">// the story</span><h1>Why Ejoshi <span class="accent">exists.</span></h1><p>Not through fear, hype, or jargon — through simple lessons, real examples, and a voice that walks with you.</p>
+    <div class="hero-cta-row"><a class="btn btn-candle" href="#join">Join the free list</a><a class="btn btn-ghost" href="resources.html">Browse resources</a></div></div></div></section><section><div class="container"><div class="bookshelf-divider" style="margin-bottom:70px"></div><span class="section-eyebrow reveal">// it started with a family</span><h2 class="section-title reveal">Named after two sons and a family name.</h2><p class="section-intro reveal" style="max-width:720px;margin-bottom:20px">Ejoshi began as a simple decision: make sure the next generation — and every family like ours — meets the AI era with a clear way to learn, not a wall of fear or hype.</p><p class="section-intro reveal" style="max-width:720px;margin-bottom:20px">The last two technology waves left a lot of people behind. This one doesn't have to. The skill isn't knowing everything; it's learning how to use AI calmly, in real life.</p></div></section><section><div class="container"><div class="bookshelf-divider" style="margin-bottom:70px"></div><span class="section-eyebrow reveal">// what we believe</span><h2 class="section-title reveal">A calm place to learn the future.</h2><p class="section-intro reveal">Three things we hold to.</p><div class="cards"><div class="card reveal"><h4>Free to access</h4><p>Open access, no paywall, no gatekeeping. The future shouldn't be locked behind one.</p></div><div class="card reveal"><h4>Built in public</h4><p>Made with AI, in plain sight — so you can learn the same way we work.</p></div><div class="card reveal"><h4>Honest about where we are</h4><p>We describe what exists today and say plainly what's still being built.</p></div></div></div></section><section><div class="container"><div class="bookshelf-divider" style="margin-bottom:70px"></div><span class="section-eyebrow reveal">// today vs. coming</span><h2 class="section-title reveal">What's here, and what's coming.</h2><p class="section-intro reveal" style="max-width:720px;margin-bottom:20px">Here today: the brand, this site, the email list, and a free library of practical AI guides.</p><p class="section-intro reveal" style="max-width:720px;margin-bottom:20px">Coming: structured lessons, a learning community, and more. When they're real, they'll be here — and if you're on the list, you'll be the first to know.</p></div></section><section id="join" class="bottom-stage"><div class="embers" aria-hidden="true"><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span><span class="ember"></span></div>
+    <div class="container"><div class="cta-block reveal"><div class="cta-card"><span class="section-eyebrow">// Coming soon</span>
+    <h2>Meet the <em>Ejoshi family</em> &mdash; soon.</h2><p>An animated series that teaches AI through story. Subscribe to catch the first episode.</p>
+    <div style="text-align:center;margin-top:6px;"><a class="btn btn-candle" href="https://ejoshi.beehiiv.com/subscribe" target="_blank" rel="noopener">Catch the first episode &rarr;</a></div>
+    </div></div></div></section>
+</main>
+<footer><div class="footer-inner">
+    <div class="footer-brand"><img src="../assets/img/ejoshi-icon-cream.svg" alt="Ejoshi"><div><div class="footer-name">Ejoshi</div><div class="footer-tagline">Made for the Ones Who Move Different.</div></div></div>
+    <div style="text-align:right"><ul class="footer-links" style="justify-content:flex-end;margin-bottom:16px"><li><a href="about.html">About</a></li><li><a href="resources.html">Resources</a></li><li><a href="videos.html">The Series</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://claude.com/download" target="_blank" rel="noopener">Get Claude</a></li></ul><div class="footer-meta">意乔施 · 2026</div></div>
+    </div></footer>
+<script>(()=>{const r=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const els=document.querySelectorAll('.reveal');if('IntersectionObserver'in window&&!r){const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('is-visible');io.unobserve(x.target);}})},{threshold:.12});els.forEach(el=>io.observe(el));}else{els.forEach(el=>el.classList.add('is-visible'));}})();</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav");if(t&&n){t.addEventListener("click",function(){var o=n.classList.toggle("is-open");t.setAttribute("aria-expanded",o);});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("is-open");});});}})();</script><script>document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("video[autoplay]").forEach(function(v){try{v.muted=true;v.setAttribute("muted","");v.setAttribute("playsinline","");v.setAttribute("webkit-playsinline","");var p=v.play();if(p&&p.catch){p.catch(function(){});}}catch(e){}});});</script><script>(function(){try{if(matchMedia("(prefers-reduced-motion: reduce)").matches||matchMedia("(hover: none)").matches)return;document.querySelectorAll(".btn-candle").forEach(function(b){b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();var x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);b.style.transform="translate("+(x*0.16)+"px,"+(y*0.28)+"px)";});b.addEventListener("mouseleave",function(){b.style.transform="";});});}catch(e){}})();</script><!-- ASK-EJOSHI-WIDGET START =========================================
+     Ask Ejoshi — chat widget  (Hermes Agent Integration)
+     v2 2026-05-31 · built with Claude · localStorage persistence across reloads.
+     ================================================================= -->
+<div id="ask-ejoshi" data-worker-url="https://ask-ejoshi.nick-72e.workers.dev">
+  <button class="ae-fab" aria-label="Ask Ejoshi" aria-expanded="false">
+    <img src="https://ejoshi.ai/assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true"><span>Ask Ejoshi</span>
+  </button>
+  <div class="ae-panel" role="dialog" aria-label="Ask Ejoshi" hidden>
+    <div class="ae-head"><img src="https://ejoshi.ai/assets/img/ejoshi-icon-cream.svg" alt="" aria-hidden="true"><div><strong>Ask Ejoshi</strong><span>Questions about AI or Ejoshi? Ask away.</span></div><button class="ae-clear" aria-label="Clear chat" title="Clear chat">&#8635;</button><button class="ae-close" aria-label="Close">&times;</button></div>
+    <div class="ae-log" aria-live="polite"></div>
+    <form class="ae-form"><input class="ae-input" type="text" autocomplete="off" placeholder="Ask a question&hellip;" aria-label="Your question"><button class="ae-send" aria-label="Send">&rarr;</button></form>
+    <div class="ae-foot">Built with Claude &middot; be kind, it's new</div>
+  </div>
+</div>
+<style>
+  #ask-ejoshi{--ae-bg:#0F0A05;--ae-surface:#1A130A;--ae-amber:#E2A847;--ae-bronze:#BE9646;--ae-cream:#F0E0BC;--ae-dim:#bfae8e;font-family:'Inter',system-ui,sans-serif;}
+  .ae-fab{position:fixed;right:20px;bottom:20px;z-index:999;display:flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid rgba(190,150,70,.4);border-radius:999px;background:linear-gradient(135deg,var(--ae-amber),var(--ae-bronze));color:#2a1b08;font-weight:500;font-size:14px;cursor:pointer;box-shadow:0 10px 28px rgba(226,168,71,.28);}
+  .ae-fab img{width:22px;height:22px;}
+  .ae-fab:hover{transform:translateY(-2px);transition:transform .2s;}
+  .ae-panel{position:fixed;right:20px;bottom:84px;z-index:999;width:min(360px,calc(100vw - 32px));height:min(520px,70vh);display:flex;flex-direction:column;background:var(--ae-surface);border:1px solid rgba(190,150,70,.28);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+  .ae-panel[hidden]{display:none;}
+  .ae-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid rgba(190,150,70,.18);background:#211810;}
+  .ae-head img{width:30px;height:30px;}
+  .ae-head strong{color:var(--ae-cream);font-family:'Fraunces',serif;font-size:15px;display:block;}
+  .ae-head span{color:var(--ae-dim);font-size:12px;}
+  .ae-clear{margin-left:auto;background:none;border:0;color:var(--ae-dim);font-size:16px;cursor:pointer;line-height:1;}
+  .ae-close{background:none;border:0;color:var(--ae-dim);font-size:22px;cursor:pointer;line-height:1;}
+  .ae-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+  .ae-msg{max-width:85%;padding:9px 13px;border-radius:13px;font-size:14px;line-height:1.5;}
+  .ae-msg.bot{align-self:flex-start;background:#2a2014;color:var(--ae-cream);border:1px solid rgba(190,150,70,.18);}
+  .ae-msg.me{align-self:flex-end;background:linear-gradient(135deg,var(--ae-amber),var(--ae-bronze));color:#2a1b08;}
+  .ae-msg.note{align-self:center;color:var(--ae-dim);font-size:12.5px;text-align:center;background:none;}
+  .ae-form{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(190,150,70,.18);}
+  .ae-input{flex:1;background:#0f0a05;border:1px solid rgba(190,150,70,.25);color:var(--ae-cream);border-radius:999px;padding:10px 16px;font-size:14px;}
+  .ae-input:focus{outline:none;border-color:var(--ae-amber);}
+  .ae-send{background:linear-gradient(135deg,var(--ae-amber),var(--ae-bronze));border:0;color:#2a1b08;border-radius:50%;width:38px;height:38px;font-size:17px;cursor:pointer;flex-shrink:0;}
+  .ae-foot{padding:0 14px 10px;color:var(--ae-dim);font-size:11px;text-align:center;font-family:'JetBrains Mono',monospace;}
+  @media (prefers-reduced-motion:reduce){.ae-fab:hover{transform:none;}}
+</style>
+<script>
+(function(){
+  var root=document.getElementById('ask-ejoshi');if(!root)return;
+  var WORKER_URL=(root.getAttribute('data-worker-url')||'').trim();
+  var KEY='ejoshi_chat_v1';
+  var fab=root.querySelector('.ae-fab'),panel=root.querySelector('.ae-panel'),log=root.querySelector('.ae-log'),
+      form=root.querySelector('.ae-form'),input=root.querySelector('.ae-input'),
+      closeBtn=root.querySelector('.ae-close'),clearBtn=root.querySelector('.ae-clear');
+  var history=[],opened=false,busy=false;
+  function load(){try{var s=localStorage.getItem(KEY);if(s){history=JSON.parse(s)||[];}}catch(e){history=[];}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(history.slice(-20)));}catch(e){}}
+  function add(text,cls){var d=document.createElement('div');d.className='ae-msg '+cls;d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+  function greet(){
+    if(!WORKER_URL){add("Hi - I'm the Ejoshi owl. I'm just about ready to chat. In the meantime, the free guides are on the Resources page, and you can try AI yourself in Claude.","bot");}
+    else{add("Hi - I'm the Ejoshi owl. Ask me anything about Ejoshi or getting started with AI.","bot");}
+  }
+  function render(){log.innerHTML='';for(var i=0;i<history.length;i++){add(history[i].content,history[i].role==='assistant'?'bot':'me');}}
+  function open(){panel.hidden=false;fab.setAttribute('aria-expanded','true');input.focus();
+    if(!opened){opened=true;if(history.length){render();}else{greet();}}}
+  function close(){panel.hidden=true;fab.setAttribute('aria-expanded','false');}
+  function clear(){history=[];save();log.innerHTML='';greet();input.focus();}
+  fab.addEventListener('click',function(){panel.hidden?open():close();});
+  closeBtn.addEventListener('click',close);
+  if(clearBtn){clearBtn.addEventListener('click',clear);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var q=input.value.trim();if(!q||busy)return;
+    add(q,'me');history.push({role:'user',content:q});save();input.value='';
+    if(!WORKER_URL){add("Chat isn't switched on yet - but the Resources page has the free guides, and you can open Claude (claude.com/download) to try AI right now.","note");return;}
+    busy=true;var thinking=add("...",'bot');
+    fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})})
+      .then(function(r){return r.json();})
+      .then(function(d){thinking.remove();var reply=(d&&d.reply)?d.reply:"Sorry - something went wrong. Try again in a moment?";add(reply,'bot');history.push({role:'assistant',content:reply});save();})
+      .catch(function(){thinking.remove();add("Sorry - I couldn't reach the server. Please try again.","bot");})
+      .finally(function(){busy=false;});
+  });
+  load();
+})();
+</script>
+<!-- ASK-EJOSHI-WIDGET END ========================================== -->
+</body></html>

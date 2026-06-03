@@ -160,7 +160,7 @@
     .hero-video-fallback {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      background-image: url('assets/video/ejoshi-ai-learning-library-hero-poster.jpg');
+      background-image: url('../assets/video/cartoon-ejoshi-garden-hero-poster.jpg');
       background-size: cover; background-position: center;
       z-index: 0;
     }
@@ -212,6 +212,17 @@
       text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
     }
     .hero-cta-row { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    /* Cartoon Ejoshi mascot floating in the hero (the series face) */
+    .hero-mascot {
+      position: absolute; z-index: 2;
+      right: clamp(8px, 5vw, 90px); bottom: 0;
+      height: min(70vh, 580px); width: auto;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,0.55))
+              drop-shadow(0 0 70px rgba(226,168,71,0.28));
+      animation: gentleFloat 6s ease-in-out infinite;
+      pointer-events: none;
+    }
 
     /* Scroll cue */
     .scroll-cue {
@@ -301,10 +312,33 @@
               drop-shadow(0 0 80px rgba(226, 168, 71, 0.25));
       animation: gentleFloat 6s ease-in-out infinite;
     }
+    .intro-owl img.intro-logo {
+      max-width: 248px;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55))
+              drop-shadow(0 0 60px rgba(226,168,71,0.45));
+    }
     @keyframes gentleFloat {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+
+    /* WORLD BAND — Ejoshi & friends in Hollowbrook (series art) */
+    .world-band {
+      position: relative; padding: 0;
+      max-width: 1180px; margin: 0 auto;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 30px 70px -30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(190,150,70,0.18);
+    }
+    .world-band img { display: block; width: 100%; height: auto; }
+    .world-band-copy {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 56px 44px 34px;
+      background: linear-gradient(180deg, transparent, rgba(15,10,5,0.82));
+    }
+    .world-band-copy .section-eyebrow { margin-bottom: 10px; }
+    .world-band-copy .section-title { margin: 0; color: var(--cream); font-size: clamp(26px,3.4vw,42px); }
+    @media (max-width: 640px){ .world-band-copy { padding: 30px 20px 18px; } }
 
     /* ============================================================
        AUDIENCE — 7 entry points
@@ -874,6 +908,7 @@
         scroll-behavior: auto !important;
       }
       .hero-video { display: none; }
+      .hero-mascot { display: none; }
       .reveal { opacity: 1; transform: none; }
     }
   
@@ -989,12 +1024,9 @@
        ============================================================ -->
   <section class="hero">
     <div class="hero-video-fallback" aria-hidden="true"></div>
-    <video
-      class="hero-video"
-      autoplay muted loop playsinline
-      poster="assets/video/ejoshi-ai-learning-library-hero-poster.jpg"
-      aria-hidden="true">
-      <source src="../assets/video/ejoshi-ai-learning-library-hero.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline
+      poster="../assets/video/cartoon-ejoshi-garden-hero-poster.jpg" aria-hidden="true">
+      <source src="../assets/video/cartoon-ejoshi-garden-hero.mp4" type="video/mp4">
     </video>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-vignette" aria-hidden="true"></div>
@@ -1023,9 +1055,7 @@
     <div class="container">
       <div class="intro-grid">
         <div class="intro-owl reveal">
-          <video class="intro-owl-video" autoplay muted loop playsinline poster="assets/video/ejoshi-owl-flying-poster.jpg" aria-label="Ejoshi owl">
-            <source src="../assets/video/ejoshi-owl-flying.mp4" type="video/mp4">
-          </video>
+          <img class="intro-logo" src="../assets/img/ejoshi-icon-amber.svg" alt="Ejoshi logo — open book with a haloed lightbulb">
         </div>
         <div>
           <span class="section-eyebrow reveal">// Made for the ones who move different</span>
@@ -1098,6 +1128,21 @@
           </div>
           <span class="audience-tile-arrow">→</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WORLD BAND — Ejoshi & friends (series art)
+       ============================================================ -->
+  <section style="padding:90px 0;">
+    <div class="container">
+      <div class="world-band reveal">
+        <img src="../assets/img/cartoon-hero-fourkids.jpg" alt="Ejoshi the owl with friends in the village of Hollowbrook">
+        <div class="world-band-copy">
+          <span class="section-eyebrow">// Made for the ones who move different</span>
+          <h2 class="section-title">Learning AI, <em>together.</em></h2>
+        </div>
       </div>
     </div>
   </section>

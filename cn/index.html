@@ -160,7 +160,7 @@
     .hero-video-fallback {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      background-image: url('assets/video/ejoshi-ai-learning-library-hero-poster.jpg');
+      background-image: url('../assets/video/cartoon-ejoshi-garden-hero-poster.jpg');
       background-size: cover; background-position: center;
       z-index: 0;
     }
@@ -305,6 +305,18 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    .intro-owl img.intro-logo {
+      max-width: 248px;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55)) drop-shadow(0 0 60px rgba(226,168,71,0.45));
+    }
+    .world-band { position: relative; padding: 0; max-width: 1180px; margin: 0 auto;
+      border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 70px -30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(190,150,70,0.18); }
+    .world-band img { display: block; width: 100%; height: auto; }
+    .world-band-copy { position: absolute; left: 0; right: 0; bottom: 0; padding: 56px 44px 34px;
+      background: linear-gradient(180deg, transparent, rgba(15,10,5,0.82)); }
+    .world-band-copy .section-title { margin: 0; color: var(--cream); font-size: clamp(26px,3.4vw,42px); }
+    @media (max-width: 640px){ .world-band-copy { padding: 30px 20px 18px; } }
 
     /* ============================================================
        AUDIENCE — 7 entry points
@@ -989,12 +1001,9 @@
        ============================================================ -->
   <section class="hero">
     <div class="hero-video-fallback" aria-hidden="true"></div>
-    <video
-      class="hero-video"
-      autoplay muted loop playsinline
-      poster="assets/video/ejoshi-ai-learning-library-hero-poster.jpg"
-      aria-hidden="true">
-      <source src="../assets/video/ejoshi-ai-learning-library-hero.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline
+      poster="../assets/video/cartoon-ejoshi-garden-hero-poster.jpg" aria-hidden="true">
+      <source src="../assets/video/cartoon-ejoshi-garden-hero.mp4" type="video/mp4">
     </video>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-vignette" aria-hidden="true"></div>
@@ -1024,9 +1033,7 @@
     <div class="container">
       <div class="intro-grid">
         <div class="intro-owl reveal">
-          <video class="intro-owl-video" autoplay muted loop playsinline poster="assets/video/ejoshi-owl-flying-poster.jpg" aria-label="Ejoshi owl">
-            <source src="../assets/video/ejoshi-owl-flying.mp4" type="video/mp4">
-          </video>
+          <img class="intro-logo" src="../assets/img/ejoshi-icon-amber.svg" alt="Ejoshi logo">
         </div>
         <div>
           <span class="section-eyebrow reveal">// 为不一样的前行者而生</span>
@@ -1099,6 +1106,16 @@
           </div>
           <span class="audience-tile-arrow">→</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORLD BAND — Ejoshi & friends (series art) -->
+  <section style="padding:90px 0;">
+    <div class="container">
+      <div class="world-band reveal">
+        <img src="../assets/img/cartoon-hero-fourkids.jpg" alt="Ejoshi &amp; friends — Hollowbrook">
+        <div class="world-band-copy"><h2 class="section-title">为不一样的前行者而生</h2></div>
       </div>
     </div>
   </section>
